@@ -17,19 +17,19 @@ import himtiumt.co.id.himtiapps.anggota.model.DataAnggota;
 import himtiumt.co.id.himtiapps.databinding.ActivityAnggotaBinding;
 
 public class AnggotaActivity extends AppCompatActivity {
-private ActivityAnggotaBinding binding;
 
-    private  List<DataAnggota> dataAnggotaList2021;
-    private  List<DataAnggota> dataAnggotaList2020;
-    private  List<DataAnggota> dataAnggotaList2019;
-    private  List<DataAnggota> dataAnggotaList2018;
-    private  List<DataAnggota> dataAnggotaList2017;
-    private  List<DataAnggota> dataAnggotaList2016;
-    private  List<DataAnggota> dataAnggotaList2015;
-    private  List<DataAnggota> dataAnggotaList2014;
-    private  List<DataAnggota> dataAnggotaList2013;
-    private  List<DataAnggota> dataAnggotaList2012;
-    private  List<DataAnggota> dataAnggotaList2011;
+    private ActivityAnggotaBinding binding;
+    private List<DataAnggota> dataAnggotaList2021;
+    private List<DataAnggota> dataAnggotaList2020;
+    private List<DataAnggota> dataAnggotaList2019;
+    private List<DataAnggota> dataAnggotaList2018;
+    private List<DataAnggota> dataAnggotaList2017;
+    private List<DataAnggota> dataAnggotaList2016;
+    private List<DataAnggota> dataAnggotaList2015;
+    private List<DataAnggota> dataAnggotaList2014;
+    private List<DataAnggota> dataAnggotaList2013;
+    private List<DataAnggota> dataAnggotaList2012;
+    private List<DataAnggota> dataAnggotaList2011;
     private AnggotaAdapter DataAnggotaAdapter;
 
 
@@ -38,7 +38,7 @@ private ActivityAnggotaBinding binding;
 
         super.onCreate(savedInstanceState);
         binding = ActivityAnggotaBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_anggota);
+        setContentView(binding.getRoot());
 
         binding.rvDataAnggota.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(AnggotaActivity.this,

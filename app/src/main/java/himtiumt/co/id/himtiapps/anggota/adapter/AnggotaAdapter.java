@@ -20,7 +20,6 @@ import himtiumt.co.id.himtiapps.anggota.model.DataAnggota;
 
 public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaViewHolder> {
 
-
     private List<DataAnggota> dataAnggotaList;
     private Context context;
 
@@ -33,8 +32,8 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaV
     @Override
     public AnggotaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.activity_anggota,parent,false);
-        return  new AnggotaViewHolder(view);
+                .inflate(R.layout.item_anggota,parent,false);
+        return new AnggotaViewHolder(view);
     }
 
     @Override
