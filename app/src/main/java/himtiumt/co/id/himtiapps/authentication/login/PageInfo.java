@@ -21,8 +21,8 @@ import himtiumt.co.id.himtiapps.R;
 public class PageInfo extends AppCompatActivity {
 
     private AdapterScreens adapterScreens;
-    private LinearLayout IndicatorScreens;
-    private MaterialButton MaterialButton1, MaterialButton2;
+    private LinearLayout indicatorScreensLinearLayout;
+    private MaterialButton materialSkip, materialNext;
     ViewPager2 viewPager2;
 
     @Override
@@ -32,25 +32,25 @@ public class PageInfo extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        IndicatorScreens = findViewById(R.id.dots_indicator);
-        MaterialButton1 = findViewById(R.id.MaterialSkip);
-        MaterialButton2 = findViewById(R.id.MaterialNext);
+        indicatorScreensLinearLayout = findViewById(R.id.dots_indicator);
+        materialSkip = findViewById(R.id.MaterialSkip);
+        materialNext = findViewById(R.id.MaterialNext);
 
         viewPager2 = findViewById(R.id.ViewPager);
         setupOnItem();
 
         setupIndicator();
-        setIndicatorScreens(0);
+        setIndicatorScreensLinearLayout(0);
 
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                setIndicatorScreens(position);
+                setIndicatorScreensLinearLayout(position);
             }
         });
 
-        MaterialButton2.setOnClickListener(new View.OnClickListener() {
+        materialNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (viewPager2.getCurrentItem() + 1 < adapterScreens.getItemCount()) {
@@ -62,7 +62,7 @@ public class PageInfo extends AppCompatActivity {
             }
         });
 
-        MaterialButton1.setOnClickListener(new View.OnClickListener() {
+        materialSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent Skipview = new Intent(PageInfo.this, LoginActivity.class);
@@ -73,24 +73,24 @@ public class PageInfo extends AppCompatActivity {
 
     private void setupOnItem() {
 
-        List<Item_Screens> item_screens = new ArrayList<>();
+        List<ItemScreens> item_screens = new ArrayList<>();
 
-        Item_Screens SharingHIMTI = new Item_Screens();
+        ItemScreens SharingHIMTI = new ItemScreens();
         SharingHIMTI.setTitle("Sharing HIMTI");
         SharingHIMTI.setDescription("Sebuah kegiatan yang dilaksanakan untuk belajar mengajar bidang Informatika bisa di ikuti para anggota dan non anggota");
         SharingHIMTI.setImage(R.drawable.zyro_sharing);
 
-        Item_Screens EventHIMTI = new Item_Screens();
+        ItemScreens EventHIMTI = new ItemScreens();
         EventHIMTI.setTitle("Events HIMTI");
         EventHIMTI.setDescription("Salah satu kegiatan yang bisa di ikuti oleh mahasiswa. bebagai kegiatan ada pada Event HIMTI");
         EventHIMTI.setImage(R.drawable.zyro_events);
 
-        Item_Screens AboutHIMTI = new Item_Screens();
+        ItemScreens AboutHIMTI = new ItemScreens();
         AboutHIMTI.setTitle("Tentang HIMTI");
         AboutHIMTI.setDescription("Berisi tentang seputar sejarah, struktural, keanggotaan dan dokumentasi HIMTI");
         AboutHIMTI.setImage(R.drawable.zyro_aboutorganization);
 
-        Item_Screens AboutCampus = new Item_Screens();
+        ItemScreens AboutCampus = new ItemScreens();
         AboutCampus.setTitle("Info Kampus");
         AboutCampus.setDescription("Memberikan informasi berita terbaru seputar kampus UMT");
         AboutCampus.setImage(R.drawable.zyro_aboutcampus);
@@ -102,7 +102,6 @@ public class PageInfo extends AppCompatActivity {
 
         adapterScreens = new AdapterScreens(item_screens);
         viewPager2.setAdapter(adapterScreens);
-
     }
 
     private void setupIndicator() {
@@ -118,14 +117,14 @@ public class PageInfo extends AppCompatActivity {
                     R.drawable.indicator_inactive
             ));
             Indicators[i].setLayoutParams(layoutParams);
-            IndicatorScreens.addView(Indicators[i]);
+            indicatorScreensLinearLayout.addView(Indicators[i]);
         }
     }
 
-    private void setIndicatorScreens(int index) {
-        int childCount = IndicatorScreens.getChildCount();
+    private void setIndicatorScreensLinearLayout(int index) {
+        int childCount = indicatorScreensLinearLayout.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            ImageView imageView = (ImageView) IndicatorScreens.getChildAt(i);
+            ImageView imageView = (ImageView) indicatorScreensLinearLayout.getChildAt(i);
             if (i == index) {
                 imageView.setImageDrawable(
                         ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_active)

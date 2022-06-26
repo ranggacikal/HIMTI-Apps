@@ -20,7 +20,7 @@
         android:textSize="22sp" />
 
     <TextView
-        android:id="@+id/IndexMasuk"
+        android:id="@+id/tv_title_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/MasukHIMTI"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEmail"
+            android:id="@+id/ti_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableBottom="@color/darkgray"
@@ -70,16 +70,17 @@
         app:passwordToggleEnabled="true">
 
         <EditText
-            android:id="@+id/textInputPassword"
+            android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:imeOptions="actionDone"
             android:inputType="textPassword" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/txtLupaPassword"
+        android:id="@+id/tv_lupa_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -91,7 +92,7 @@
         android:textSize="12dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/MateriaLogin"
+        android:id="@+id/btn_masuk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -168,7 +169,7 @@
             android:textColorHint="@color/darkgray" />
 
         <TextView
-            android:id="@+id/txt_Akun1"
+            android:id="@+id/tv_daftar_akun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"

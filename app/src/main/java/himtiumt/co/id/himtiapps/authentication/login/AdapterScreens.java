@@ -15,9 +15,9 @@ import himtiumt.co.id.himtiapps.R;
 
 public class AdapterScreens extends RecyclerView.Adapter<AdapterScreens.AdapterViewHolder> {
 
-    private List<Item_Screens> item_screens;
+    private List<ItemScreens> item_screens;
 
-    public AdapterScreens(List<Item_Screens> item_screens) {
+    public AdapterScreens(List<ItemScreens> item_screens) {
         this.item_screens = item_screens;
     }
 
@@ -44,19 +44,19 @@ public class AdapterScreens extends RecyclerView.Adapter<AdapterScreens.AdapterV
     class AdapterViewHolder extends RecyclerView.ViewHolder{
         private TextView textTitle;
         private TextView textDescription;
-        private ImageView ImageContainer;
+        private ImageView imageContainer;
 
         public AdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             textTitle = itemView.findViewById(R.id.textTitle);
             textDescription = itemView.findViewById(R.id.textDescription);
-            ImageContainer = itemView.findViewById(R.id.ImageContainer);
+            imageContainer = itemView.findViewById(R.id.ImageContainer);
         }
 
-        void setOnData(Item_Screens onItem) {
+        void setOnData(ItemScreens onItem) {
             textTitle.setText((onItem.getTitle()));
             textDescription.setText(onItem.getDescription());
-            ImageContainer.setImageResource(onItem.getImage());
+            imageContainer.setImageResource(onItem.getImage());
         }
     }
 }
