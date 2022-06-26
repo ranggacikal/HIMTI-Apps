@@ -21,8 +21,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        IndexOne = findViewById(R.id.MasukHIMTI);
-        IndexTwo = findViewById(R.id.IndexMasuk);
+        IndexOne = findViewById(R.id.tv_masuk_himti);
+        IndexTwo = findViewById(R.id.tv_title_login);
         IndexTree = findViewById(R.id.txtLupaPassword);
         IndexFour = findViewById(R.id.txt_Akun1);
         MaterialEmail = findViewById(R.id.MateriaEmail);
