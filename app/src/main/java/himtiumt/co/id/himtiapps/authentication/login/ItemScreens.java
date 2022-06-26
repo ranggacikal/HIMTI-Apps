@@ -1,6 +1,6 @@
 package himtiumt.co.id.himtiapps.authentication.login;
 
-public class Item_Screens {
+public class ItemScreens {
 
     private int image;
     private String title;
