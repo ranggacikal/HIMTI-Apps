@@ -59,9 +59,9 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaV
         public AnggotaViewHolder(@NonNull View itemView) {
             super(itemView);
             imgProfile =itemView.findViewById(R.id.iv_profile);
-            txtNama =itemView.findViewById(R.id.txt_nama);
-            txtNim =itemView.findViewById(R.id.txt_nim);
-            txtTahunAngkatan =itemView.findViewById(R.id.txt_tahun_angkatan);
+            txtNama =itemView.findViewById(R.id.tv_nama);
+            txtNim =itemView.findViewById(R.id.tv_nim);
+            txtTahunAngkatan =itemView.findViewById(R.id.tv_tahun_angkatan);
         }
     }
 }

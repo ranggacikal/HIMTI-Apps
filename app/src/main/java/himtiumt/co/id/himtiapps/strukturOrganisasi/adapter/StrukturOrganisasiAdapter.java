@@ -57,9 +57,9 @@ public class StrukturOrganisasiAdapter extends RecyclerView.Adapter<StrukturOrga
         public StrukturViewHolder(@NonNull View itemView) {
             super(itemView);
             imgSprofile = itemView.findViewById(R.id.iv_struktur_profile);
-            txtSnama = itemView.findViewById(R.id.txt_struktur_nama);
-            txtSnim = itemView.findViewById(R.id.txt_struktur_nim);
-            txtSjabatan = itemView.findViewById(R.id.txt_jabatan);
+            txtSnama = itemView.findViewById(R.id.tv_struktur_nama);
+            txtSnim = itemView.findViewById(R.id.tv_struktur_nim);
+            txtSjabatan = itemView.findViewById(R.id.tv_jabatan);
         }
     }
 }
