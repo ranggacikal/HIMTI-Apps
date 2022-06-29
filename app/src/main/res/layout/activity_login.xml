@@ -28,7 +28,7 @@
         android:hint="Lorem ipsum dolor sit amet, consectetu adipiscing elit. Lorem ipsum dolor sit "
         android:paddingLeft="30dp"
         android:textColorHint="@color/black"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/MateriaEmail"

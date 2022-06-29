@@ -2,7 +2,10 @@ package himtiumt.co.id.himtiapps.authentication.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,8 +14,10 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 import himtiumt.co.id.himtiapps.R;
+import himtiumt.co.id.himtiapps.authentication.ResetKataSandi;
 import himtiumt.co.id.himtiapps.authentication.login.model.RequestLogin;
 import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,10 +41,18 @@ public class LoginActivity extends AppCompatActivity {
         tvDaftarAkun = findViewById(R.id.tv_daftar_akun);
         btnMasuk = findViewById(R.id.btn_masuk);
 
-        btnMasuk.setOnClickListener(v -> {
-            login(tiEmail.getText().toString(), edtPassword.getText().toString());
+        tvLupaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent resetPassword = new Intent(LoginActivity.this, ResetKataSandi.class);
+                startActivity(resetPassword);
+            }
         });
 
+        btnMasuk.setOnClickListener(v -> {
+            login(tiEmail.getText().toString(), edtPassword.getText().toString());
+
+        });
     }
 
     private void login(String email, String password){
