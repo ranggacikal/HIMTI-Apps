@@ -30,7 +30,7 @@ public class AnggotaActivity extends AppCompatActivity {
     private List<DataAnggota> dataAnggotaList2013;
     private List<DataAnggota> dataAnggotaList2012;
     private List<DataAnggota> dataAnggotaList2011;
-    private AnggotaAdapter DataAnggotaAdapter;
+    private AnggotaAdapter dataAnggotaAdapter;
 
 
     @Override
@@ -127,58 +127,58 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2011() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2011, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2011, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2012() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2012, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2012, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2013() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2013, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2013, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2014() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2014, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2014, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2015() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2015, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2015, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2016() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2016, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2016, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2017() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2017, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2017, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2018() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2018, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2018, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2019() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2019, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2019, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2020() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2020, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2020, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void sortBy2021() {
-        DataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2021, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(DataAnggotaAdapter);
+        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2021, AnggotaActivity.this);
+        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
     }
 
     private void setupList2021() {
