@@ -36,9 +36,9 @@ public class StrukturOrganisasiAdapter extends RecyclerView.Adapter<StrukturOrga
     @Override
     public void onBindViewHolder(@NonNull StrukturViewHolder holder, int position) {
         holder.imgSprofile.setImageResource(strukturOrganisasiList.get(position).getImgStrukturProfile());
-        holder.txtSnama.setText(strukturOrganisasiList.get(position).getTxtStrukturNama());
-        holder.txtSnim.setText(strukturOrganisasiList.get(position).getTxtStrukturNim());
-        holder.txtSjabatan.setText(strukturOrganisasiList.get(position).getTxtJabatan());
+        holder.tvSnama.setText(strukturOrganisasiList.get(position).getTxtStrukturNama());
+        holder.tvSnim.setText(strukturOrganisasiList.get(position).getTxtStrukturNim());
+        holder.tvSjabatan.setText(strukturOrganisasiList.get(position).getTxtJabatan());
 
     }
 
@@ -50,16 +50,16 @@ public class StrukturOrganisasiAdapter extends RecyclerView.Adapter<StrukturOrga
     public class StrukturViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgSprofile;
-        TextView txtSnama;
-        TextView txtSnim;
-        TextView txtSjabatan;
+        TextView tvSnama;
+        TextView tvSnim;
+        TextView tvSjabatan;
 
         public StrukturViewHolder(@NonNull View itemView) {
             super(itemView);
             imgSprofile = itemView.findViewById(R.id.iv_struktur_profile);
-            txtSnama = itemView.findViewById(R.id.tv_struktur_nama);
-            txtSnim = itemView.findViewById(R.id.tv_struktur_nim);
-            txtSjabatan = itemView.findViewById(R.id.tv_jabatan);
+            tvSnama = itemView.findViewById(R.id.tv_struktur_nama);
+            tvSnim = itemView.findViewById(R.id.tv_struktur_nim);
+            tvSjabatan = itemView.findViewById(R.id.tv_jabatan);
         }
     }
 }

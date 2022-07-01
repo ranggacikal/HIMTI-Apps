@@ -1,7 +1,6 @@
 package himtiumt.co.id.himtiapps.anggota.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -38,9 +35,9 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaV
 
     @Override
     public void onBindViewHolder(@NonNull AnggotaViewHolder holder, int position) {
-        holder.txtNama.setText(dataAnggotaList.get(position).getTxtNama());
-        holder.txtNim.setText(dataAnggotaList.get(position).getTxtNim());
-        holder.txtTahunAngkatan.setText(String.valueOf(dataAnggotaList.get(position).getTxtTahunAngkatan()));
+        holder.tvNama.setText(dataAnggotaList.get(position).getTxtNama());
+        holder.tvNim.setText(dataAnggotaList.get(position).getTxtNim());
+        holder.tvTahunAngkatan.setText(String.valueOf(dataAnggotaList.get(position).getTxtTahunAngkatan()));
         holder.imgProfile.setImageResource(dataAnggotaList.get(position).getImgProfle());
     }
 
@@ -52,16 +49,16 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaV
     public class AnggotaViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgProfile;
-        TextView txtNama;
-        TextView txtNim;
-        TextView txtTahunAngkatan;
+        TextView tvNama;
+        TextView tvNim;
+        TextView tvTahunAngkatan;
 
         public AnggotaViewHolder(@NonNull View itemView) {
             super(itemView);
             imgProfile =itemView.findViewById(R.id.iv_profile);
-            txtNama =itemView.findViewById(R.id.tv_nama);
-            txtNim =itemView.findViewById(R.id.tv_nim);
-            txtTahunAngkatan =itemView.findViewById(R.id.tv_tahun_angkatan);
+            tvNama =itemView.findViewById(R.id.tv_nama);
+            tvNim =itemView.findViewById(R.id.tv_nim);
+            tvTahunAngkatan =itemView.findViewById(R.id.tv_tahun_angkatan);
         }
     }
 }
