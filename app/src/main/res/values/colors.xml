@@ -12,5 +12,6 @@
     <color name="darkgray">#D9D9D9</color>
     <color name="darkwhite">#F0F2FA</color>
     <color name="darkblack">#3F3F3F</color>
+    <color name="neonblue">#00FFDD</color>
 
 </resources>

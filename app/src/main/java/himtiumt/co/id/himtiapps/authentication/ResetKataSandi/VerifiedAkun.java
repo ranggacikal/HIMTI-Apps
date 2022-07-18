@@ -1,4 +1,4 @@
-package himtiumt.co.id.himtiapps.authentication;
+package himtiumt.co.id.himtiapps.authentication.ResetKataSandi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ import himtiumt.co.id.himtiapps.authentication.login.LoginActivity;
 
 public class VerifiedAkun extends AppCompatActivity {
 
+    // Hook
     MaterialButton halamanLogin;
 
     @Override
@@ -20,8 +21,13 @@ public class VerifiedAkun extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verified_akun);
 
+        // Eliminate ActionBar
+        getSupportActionBar().hide();
+
+        // Hooks
         halamanLogin = findViewById(R.id.MaterialHalamanLogin);
 
+        // View OnClick
         halamanLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

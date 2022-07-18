@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authentication.VerifiedAkun">
+    android:orientation="vertical"
+    tools:context=".authentication.ResetKataSandi.VerifiedAkun">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/Circle_Verified"
@@ -28,10 +29,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="46dp"
-        android:gravity="center"
         android:layout_marginTop="83dp"
         android:layout_marginEnd="46dp"
         android:fontFamily="@font/poppins_extrabold"
+        android:gravity="center"
+        android:textStyle="normal"
         android:text="Sukses Kata Sandi Baru"
         android:textColor="@color/darkblue"
         android:textSize="22dp" />
@@ -39,25 +41,26 @@
     <TextView
         android:id="@+id/Description"
         android:layout_width="280dp"
-        android:layout_height="42dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/SukseskataSandiBaru"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
-        android:gravity="center"
-        android:hint="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:hint="Selamat kata sandi kamu sudah di perbarui, silahkan masuk kembali ! "
         android:textColorHint="@color/black"
-        android:textSize="18dp" />
+        android:textSize="14sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/MaterialHalamanLogin"
         android:layout_width="315dp"
-        android:layout_height="70dp"
-        android:layout_below="@+id/Circle_Verified"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="313dp"
+        android:layout_marginTop="630dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/darkblue"
