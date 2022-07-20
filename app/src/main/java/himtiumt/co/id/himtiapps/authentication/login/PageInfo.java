@@ -34,8 +34,6 @@ public class PageInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_info);
 
-        getSupportActionBar().hide();
-
         indicatorScreensLinearLayout = findViewById(R.id.dots_indicator);
         materialSkip = findViewById(R.id.MaterialSkip);
         materialNext = findViewById(R.id.MaterialNext);

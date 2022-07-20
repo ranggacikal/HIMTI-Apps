@@ -21,9 +21,6 @@ public class VerifiedAkun extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verified_akun);
 
-        // Eliminate ActionBar
-        getSupportActionBar().hide();
-
         // Hooks
         halamanLogin = findViewById(R.id.MaterialHalamanLogin);
 
