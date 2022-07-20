@@ -36,9 +36,6 @@ public class ResetKataSandi extends AppCompatActivity {
         binding = ActivityResetKataSandiBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Eliminate ActionBar
-        getSupportActionBar().hide();
-
         // Hooks
         returnResetPassword = findViewById(R.id.ClickReturn);
 
