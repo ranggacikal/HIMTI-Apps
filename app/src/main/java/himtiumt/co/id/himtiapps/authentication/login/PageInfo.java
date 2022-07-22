@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -56,7 +60,7 @@ public class PageInfo extends AppCompatActivity {
                 if (viewPager2.getCurrentItem() + 1 < adapterScreens.getItemCount()) {
                     viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
                 } else {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    startActivity(new Intent (getApplicationContext(), LoginActivity.class));
                     finish();
                 }
             }
@@ -136,5 +140,4 @@ public class PageInfo extends AppCompatActivity {
             }
         }
     }
-
 }

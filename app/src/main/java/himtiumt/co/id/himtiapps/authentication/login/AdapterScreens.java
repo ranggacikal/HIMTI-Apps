@@ -48,8 +48,8 @@ public class AdapterScreens extends RecyclerView.Adapter<AdapterScreens.AdapterV
 
         public AdapterViewHolder(@NonNull View itemView) {
             super(itemView);
-            textTitle = itemView.findViewById(R.id.textTitle);
-            textDescription = itemView.findViewById(R.id.textDescription);
+            textTitle = itemView.findViewById(R.id.TextTitle);
+            textDescription = itemView.findViewById(R.id.TextDescription);
             imageContainer = itemView.findViewById(R.id.ImageContainer);
         }
 
