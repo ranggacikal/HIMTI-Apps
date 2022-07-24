@@ -1,16 +1,20 @@
 package himtiumt.co.id.himtiapps.sharing.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.IntentCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -41,20 +45,23 @@ public class SharingAdapter extends RecyclerView.Adapter<SharingAdapter.SharingV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SharingAdapter.SharingViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull SharingAdapter.SharingViewHolder holder,
+                                 @SuppressLint("RecyclerView") int position) {
         holder.tvJudul.setText(listSharing.get(position).getTittle());
         holder.tvTanggal.setText(listSharing.get(position).getJadwal());
         Glide.with(context)
                 .load(listSharing.get(position).getImage())
                 .into(holder.image);
-        holder.cvDetail.setOnClickListener(new View.OnClickListener() {
+        holder.rlDetailSharing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent detail = new Intent(context, DetailSharingActivity.class);
                 detail.putExtra("id", listSharing.get(position).getId());
+                detail.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(detail);
             }
         });
+//
     }
 
     @Override
@@ -65,8 +72,8 @@ public class SharingAdapter extends RecyclerView.Adapter<SharingAdapter.SharingV
     public class SharingViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tvJudul, tvTanggal, tvDeskripsi;
-        private ImageView image;
-        private CardView cvDetail;
+        private ImageView image, imgDetail;
+        private RelativeLayout rlDetailSharing;
 
         public SharingViewHolder (View view){
             super(view);
@@ -74,7 +81,8 @@ public class SharingAdapter extends RecyclerView.Adapter<SharingAdapter.SharingV
             tvDeskripsi = view.findViewById(R.id.tv_deskripsi_sharing);
             tvTanggal = view.findViewById(R.id.tv_tanggal_sharing);
             image = view.findViewById(R.id.img_jadwal_sharing);
-            cvDetail = view.findViewById(R.id.cv_detail_sharing);
+            rlDetailSharing = view.findViewById(R.id.rl_detail_sharing);
+            imgDetail = view.findViewById(R.id.imgToDetail);
 
         }
     }
