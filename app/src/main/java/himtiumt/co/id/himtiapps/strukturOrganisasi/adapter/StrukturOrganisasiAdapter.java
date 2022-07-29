@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import himtiumt.co.id.himtiapps.R;
-import himtiumt.co.id.himtiapps.strukturOrganisasi.model.StrukturOrganisasi;
+import himtiumt.co.id.himtiapps.strukturOrganisasi.model.PengurusItem;
 
 public class StrukturOrganisasiAdapter extends RecyclerView.Adapter<StrukturOrganisasiAdapter.StrukturViewHolder> {
 
     private Context context;
-    private List<StrukturOrganisasi> strukturOrganisasiList;
+    private List<PengurusItem> pengurusItems;
 
-    public StrukturOrganisasiAdapter(Context context, List<StrukturOrganisasi> strukturOrganisasiList) {
+    public StrukturOrganisasiAdapter(Context context, List<PengurusItem> pengurusItems) {
         this.context = context;
-        this.strukturOrganisasiList = strukturOrganisasiList;
+        this.pengurusItems = pengurusItems;
     }
 
     @NonNull
@@ -35,28 +34,25 @@ public class StrukturOrganisasiAdapter extends RecyclerView.Adapter<StrukturOrga
 
     @Override
     public void onBindViewHolder(@NonNull StrukturViewHolder holder, int position) {
-        holder.imgSprofile.setImageResource(strukturOrganisasiList.get(position).getImgStrukturProfile());
-        holder.tvSnama.setText(strukturOrganisasiList.get(position).getTxtStrukturNama());
-        holder.tvSnim.setText(strukturOrganisasiList.get(position).getTxtStrukturNim());
-        holder.tvSjabatan.setText(strukturOrganisasiList.get(position).getTxtJabatan());
+        holder.tvSnama.setText(pengurusItems.get(position).getNama());
+        holder.tvSnim.setText(pengurusItems.get(position).getNim());
+        holder.tvSjabatan.setText(pengurusItems.get(position).getJabatan());
 
     }
 
     @Override
     public int getItemCount() {
-        return strukturOrganisasiList.size();
+        return pengurusItems.size();
     }
 
     public class StrukturViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imgSprofile;
         TextView tvSnama;
         TextView tvSnim;
         TextView tvSjabatan;
 
         public StrukturViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgSprofile = itemView.findViewById(R.id.iv_struktur_profile);
             tvSnama = itemView.findViewById(R.id.tv_struktur_nama);
             tvSnim = itemView.findViewById(R.id.tv_struktur_nim);
             tvSjabatan = itemView.findViewById(R.id.tv_jabatan);
