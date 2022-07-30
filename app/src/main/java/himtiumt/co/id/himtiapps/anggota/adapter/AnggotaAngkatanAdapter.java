@@ -14,44 +14,40 @@ import java.util.List;
 import himtiumt.co.id.himtiapps.R;
 import himtiumt.co.id.himtiapps.anggota.model.AnggotaItem;
 
-public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaViewHolder> {
-
-    private List<AnggotaItem> anggotaItems;
+public class AnggotaAngkatanAdapter extends RecyclerView.Adapter<AnggotaAngkatanAdapter.AnggotaAngkatanViewHolder>{
+    private List<AnggotaItem> angkatanItems;
     private Context context;
 
-    public AnggotaAdapter(List<AnggotaItem> anggotaItems, Context context) {
-        this.anggotaItems = anggotaItems;
+    public AnggotaAngkatanAdapter(List<AnggotaItem> angkatanItems, Context context) {
+        this.angkatanItems = angkatanItems;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public AnggotaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AnggotaAngkatanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_anggota,parent,false);
-        return new AnggotaViewHolder(view);
+        return new AnggotaAngkatanViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AnggotaViewHolder holder, int position) {
-        holder.tvNama.setText(anggotaItems.get(position).getNama());
-        holder.tvNim.setText(anggotaItems.get(position).getNim());
-        holder.tvTahunAngkatan.setText(String.valueOf(anggotaItems.get(position).getAngkatan()));
-
+    public void onBindViewHolder(@NonNull AnggotaAngkatanViewHolder holder, int position) {
+        holder.tvNama.setText(angkatanItems.get(position).getNama());
+        holder.tvNim.setText(angkatanItems.get(position).getNim());
+        holder.tvTahunAngkatan.setText(String.valueOf(angkatanItems.get(position).getAngkatan()));
     }
 
     @Override
     public int getItemCount() {
-        return anggotaItems.size();
+        return angkatanItems.size();
     }
 
-    public class AnggotaViewHolder extends RecyclerView.ViewHolder {
-
+    public class AnggotaAngkatanViewHolder extends RecyclerView.ViewHolder {
         TextView tvNama;
         TextView tvNim;
         TextView tvTahunAngkatan;
-
-        public AnggotaViewHolder(@NonNull View itemView) {
+        public AnggotaAngkatanViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNama =itemView.findViewById(R.id.tv_nama);
             tvNim =itemView.findViewById(R.id.tv_nim);
@@ -59,4 +55,3 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaV
         }
     }
 }
-

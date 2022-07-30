@@ -2,36 +2,43 @@ package himtiumt.co.id.himtiapps.anggota;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import himtiumt.co.id.himtiapps.R;
+import himtiumt.co.id.himtiapps.UI.LoadingBar;
 import himtiumt.co.id.himtiapps.anggota.adapter.AnggotaAdapter;
-import himtiumt.co.id.himtiapps.anggota.model.DataAnggota;
+import himtiumt.co.id.himtiapps.anggota.adapter.AnggotaAngkatanAdapter;
+import himtiumt.co.id.himtiapps.anggota.model.AnggotaItem;
+import himtiumt.co.id.himtiapps.anggota.model.ResponseAnggotaAll;
+import himtiumt.co.id.himtiapps.anggota.model.ResponseAngkatanAnggota;
+import himtiumt.co.id.himtiapps.anggota.model.ResponseSearchAnggota;
 import himtiumt.co.id.himtiapps.databinding.ActivityAnggotaBinding;
+import himtiumt.co.id.himtiapps.home.HomeActivity;
+import himtiumt.co.id.himtiapps.network.ApiConfig;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AnggotaActivity extends AppCompatActivity {
 
     private ActivityAnggotaBinding binding;
-    private List<DataAnggota> dataAnggotaList2021;
-    private List<DataAnggota> dataAnggotaList2020;
-    private List<DataAnggota> dataAnggotaList2019;
-    private List<DataAnggota> dataAnggotaList2018;
-    private List<DataAnggota> dataAnggotaList2017;
-    private List<DataAnggota> dataAnggotaList2016;
-    private List<DataAnggota> dataAnggotaList2015;
-    private List<DataAnggota> dataAnggotaList2014;
-    private List<DataAnggota> dataAnggotaList2013;
-    private List<DataAnggota> dataAnggotaList2012;
-    private List<DataAnggota> dataAnggotaList2011;
-    private AnggotaAdapter dataAnggotaAdapter;
-
+    private AnggotaAdapter anggotaAdapter;
+    private AnggotaAngkatanAdapter anggotaAngkatanAdapter;
+    final LoadingBar loadingBar = new LoadingBar(AnggotaActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,39 +48,88 @@ public class AnggotaActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.rvDataAnggota.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(AnggotaActivity.this,
-                3, GridLayoutManager.VERTICAL, false);
-        binding.rvDataAnggota.setLayoutManager(gridLayoutManager);
+        binding.rvDataAnggota.setLayoutManager(new LinearLayoutManager(this));
 
-        setupList2021();
+        binding.ivBackArrow.setOnClickListener(view -> {
+            Intent back = new Intent(AnggotaActivity.this, HomeActivity.class);
+            startActivity(back);
+            finish();
+        });
 
-        setupList2020();
-
-        setupList2019();
-
-        setupList2018();
-
-        setupList2017();
-
-        setupList2016();
-
-        setupList2015();
-
-        setupList2014();
-
-        setupList2013();
-
-        setupList2012();
-
-        setupList2011();
+        setUpDataDosen();
 
         setupSpinner();
 
+        setUpSearch();
 
+    }
+
+    private void setUpDataDosen() {
+        ApiConfig.service.getAnggotaAll().enqueue(new Callback<ResponseAnggotaAll>() {
+            @Override
+            public void onResponse(Call<ResponseAnggotaAll> call, Response<ResponseAnggotaAll> response) {
+                if (response.isSuccessful()) {
+                    ResponseAnggotaAll responseAnggotaAll = response.body();
+                    List<AnggotaItem> result = responseAnggotaAll.getAnggota();
+                    anggotaAdapter = new AnggotaAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAdapter);
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAnggotaAll> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setUpSearch() {
+        binding.ivSearchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search(binding.tidSearch.getText().toString());
+                loadingBar.startLoadingDialog();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingBar.dismissDialog();
+                    }
+                }, 0500);
+                binding.spinTahunAngkatan.setSelection(0);
+            }
+
+            private void search(String search) {
+                Log.d("test", "search: " + search);
+
+                ApiConfig.service.getSearchAnggota(search).enqueue(new Callback<ResponseSearchAnggota>() {
+                    @Override
+                    public void onResponse(Call<ResponseSearchAnggota> call, Response<ResponseSearchAnggota> response) {
+                        if (response.isSuccessful()) {
+                            ResponseSearchAnggota responseSearchAnggota = response.body();
+                            List<AnggotaItem> result = responseSearchAnggota.getAnggota();
+                            anggotaAdapter = new AnggotaAdapter(result, AnggotaActivity.this);
+                            binding.rvDataAnggota.setAdapter(anggotaAdapter);
+                        } else {
+                            Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseSearchAnggota> call, Throwable t) {
+                        Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     private void setupSpinner() {
         ArrayList<String> tahunAngkatan = new ArrayList<>();
+        tahunAngkatan.add("Pilih Angkatan");
+        tahunAngkatan.add("Semua Angkatan");
         tahunAngkatan.add("2021");
         tahunAngkatan.add("2020");
         tahunAngkatan.add("2019");
@@ -93,27 +149,127 @@ public class AnggotaActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    sortBy2021();
+
                 } else if (position == 1) {
-                    sortBy2020();
+                    AllList();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 2) {
-                    sortBy2019();
+                    sortBy2021();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 3) {
-                    sortBy2018();
+                    sortBy2020();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 4) {
-                    sortBy2017();
+                    sortBy2019();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 5) {
-                    sortBy2016();
+                    sortBy2018();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 6) {
-                    sortBy2015();
+                    sortBy2017();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 7) {
-                    sortBy2014();
+                    sortBy2016();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 8) {
-                    sortBy2013();
+                    sortBy2015();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 9) {
-                    sortBy2012();
+                    sortBy2014();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 } else if (position == 10) {
+                    sortBy2013();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
+                } else if (position == 11) {
+                    sortBy2012();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
+                } else if (position == 12) {
                     sortBy2011();
+                    loadingBar.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingBar.dismissDialog();
+                        }
+                    }, 0500);
                 }
             }
 
@@ -127,360 +283,288 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2011() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2011, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "2";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2012() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2012, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "3";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2013() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2013, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "1";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2014() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2014, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "2";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2015() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2015, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "3";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2016() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2016, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "1";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2017() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2017, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "2";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2018() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2018, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "3";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2019() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2019, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "1";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2020() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2020, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "2";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sortBy2021() {
-        dataAnggotaAdapter = new AnggotaAdapter(dataAnggotaList2021, AnggotaActivity.this);
-        binding.rvDataAnggota.setAdapter(dataAnggotaAdapter);
+        String angkatan = "3";
+
+        ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
+            @Override
+            public void onResponse(Call<ResponseAngkatanAnggota> call, Response<ResponseAngkatanAnggota> response) {
+                if (response.isSuccessful()) {
+                    ResponseAngkatanAnggota responseAngkatanAnggota = response.body();
+                    List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
+                    anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAngkatanAnggota> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    private void setupList2021() {
-        dataAnggotaList2021 = new ArrayList<>();
+    private void AllList() {
+        ApiConfig.service.getAnggotaAll().enqueue(new Callback<ResponseAnggotaAll>() {
+            @Override
+            public void onResponse(Call<ResponseAnggotaAll> call, Response<ResponseAnggotaAll> response) {
+                if (response.isSuccessful()) {
+                    ResponseAnggotaAll responseAnggotaAll = response.body();
+                    List<AnggotaItem> result = responseAnggotaAll.getAnggota();
+                    anggotaAdapter = new AnggotaAdapter(result, AnggotaActivity.this);
+                    binding.rvDataAnggota.setAdapter(anggotaAdapter);
+                    binding.tidSearch.getText().clear();
+                } else {
+                    Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-        dataAnggotaList2021.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2021));
-
-
+            @Override
+            public void onFailure(Call<ResponseAnggotaAll> call, Throwable t) {
+                Toast.makeText(AnggotaActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-    private void setupList2020() {
-        dataAnggotaList2020 = new ArrayList<>();
-
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-        dataAnggotaList2020.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2020));
-    }
-
-    private void setupList2019() {
-        dataAnggotaList2019 = new ArrayList<>();
-
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-        dataAnggotaList2019.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2019));
-    }
-
-    private void setupList2018() {
-        dataAnggotaList2018 = new ArrayList<>();
-
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-        dataAnggotaList2018.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2018));
-    }
-
-    private void setupList2017() {
-        dataAnggotaList2017 = new ArrayList<>();
-
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-        dataAnggotaList2017.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2017));
-    }
-
-    private void setupList2016() {
-        dataAnggotaList2016 = new ArrayList<>();
-
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-        dataAnggotaList2016.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2016));
-    }
-
-    private void setupList2015() {
-        dataAnggotaList2015 = new ArrayList<>();
-
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-        dataAnggotaList2015.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2015));
-    }
-
-    private void setupList2014() {
-        dataAnggotaList2014 = new ArrayList<>();
-
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-        dataAnggotaList2014.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2014));
-    }
-
-    private void setupList2013() {
-        dataAnggotaList2013 = new ArrayList<>();
-
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-        dataAnggotaList2013.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2013));
-    }
-
-    private void setupList2012() {
-        dataAnggotaList2012 = new ArrayList<>();
-
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-        dataAnggotaList2012.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2012));
-    }
-
-    private void setupList2011() {
-        dataAnggotaList2011 = new ArrayList<>();
-
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-        dataAnggotaList2011.add(new DataAnggota(R.drawable.ic_launcher_background, "Mohammad Dimas Noufal",
-                "2155201112", 2011));
-    }
-
-
-
-
 }

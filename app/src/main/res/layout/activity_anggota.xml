@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="37dp"
-        android:src="@drawable/ic_baseline_west" />
+        android:src="@drawable/ic_baseline_arrow_backblue" />
 
     <TextView
         android:id="@+id/tv_daata_anggota"
@@ -48,11 +48,13 @@
                 android:paddingStart="21dp" />
 
             <ImageView
+                android:id="@+id/iv_search_icon"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"/>
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/new_icon_search" />
 
         </RelativeLayout>
 
