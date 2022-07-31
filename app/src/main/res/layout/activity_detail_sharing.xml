@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sharing.DetailSharingActivity">
+
+    <ImageView
+        android:id="@+id/arrow_detail_sharing"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="38dp"
+        android:src="@drawable/ic_baseline_west" />
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txt_jadwal_detail_sharing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="38dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:text="Sharing Himti"
+        android:textColor="#0C159F"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerHorizontal="true"
+        android:layout_width="339dp"
+        android:layout_height="500dp"
+        android:layout_below="@id/txt_jadwal_detail_sharing"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="38dp"
+        app:cardBackgroundColor="#F0F2FA"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image_detail_sharing"
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                android:src="@drawable/image_sharing" />
+
+            <TextView
+                android:id="@+id/tv_judul_detail_sharing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_detail_sharing"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_extrabold"
+                android:text="Judul"
+                android:textColor="#3F3F3F"
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/tv_deskripsi_detail_sharing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_judul_detail_sharing"
+                android:layout_marginStart="20dp"
+                android:text="Membuat landing page menggunakan android studio"
+                android:textColor="#3F3F3F" />
+
+            <ImageView
+                android:id="@+id/img_date"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/tv_deskripsi_detail_sharing"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/date" />
+
+
+            <TextView
+                android:id="@+id/txt_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_deskripsi_detail_sharing"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/img_date"
+                android:fontFamily="@font/poppins_light"
+                android:text="Hari / Tanggal"
+                android:textColor="#3F3F3F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_jadwal_detail_sharing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_tanggal"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/img_date"
+                android:fontFamily="@font/poppins_light"
+                android:text="tanggal"
+                android:textColor="#3F3F3F"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/img_pemateri_detail_sharing"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/tv_jadwal_detail_sharing"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/logouser" />
+
+            <TextView
+                android:id="@+id/txt_pemateri_detail_sharing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_jadwal_detail_sharing"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/img_pemateri_detail_sharing"
+                android:fontFamily="@font/poppins_light"
+                android:text="Pemateri"
+                android:textColor="#3F3F3F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_pemateri_detail_sharing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_pemateri_detail_sharing"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/img_pemateri_detail_sharing"
+                android:fontFamily="@font/poppins_light"
+                android:text="pemateri"
+                android:textColor="#3F3F3F"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/img_ruangan_detail_sharing"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/tv_pemateri_detail_sharing"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:src="@drawable/room" />
+
+            <TextView
+                android:id="@+id/txt_ruangan_detail_sharing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_pemateri_detail_sharing"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/img_ruangan_detail_sharing"
+                android:fontFamily="@font/poppins_light"
+                android:text="Ruangan"
+                android:textColor="#3F3F3F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_ruangan_detail_sharing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_ruangan_detail_sharing"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/img_ruangan_detail_sharing"
+                android:fontFamily="@font/poppins_light"
+                android:text="ruangan"
+                android:textColor="#3F3F3F"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
