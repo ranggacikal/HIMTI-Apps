@@ -10,9 +10,14 @@
         android:id="@+id/screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/zyro_logo"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="315dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="330dp"
+        android:src="@drawable/ic_group_119" />
 
 </RelativeLayout>
