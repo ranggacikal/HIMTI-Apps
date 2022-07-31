@@ -27,7 +27,7 @@ import himtiumt.co.id.himtiapps.anggota.model.ResponseAnggotaAll;
 import himtiumt.co.id.himtiapps.anggota.model.ResponseAngkatanAnggota;
 import himtiumt.co.id.himtiapps.anggota.model.ResponseSearchAnggota;
 import himtiumt.co.id.himtiapps.databinding.ActivityAnggotaBinding;
-import himtiumt.co.id.himtiapps.home.HomeActivity;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +51,7 @@ public class AnggotaActivity extends AppCompatActivity {
         binding.rvDataAnggota.setLayoutManager(new LinearLayoutManager(this));
 
         binding.ivBackArrow.setOnClickListener(view -> {
-            Intent back = new Intent(AnggotaActivity.this, HomeActivity.class);
+            Intent back = new Intent(AnggotaActivity.this, MainActivity.class);
             startActivity(back);
             finish();
         });
