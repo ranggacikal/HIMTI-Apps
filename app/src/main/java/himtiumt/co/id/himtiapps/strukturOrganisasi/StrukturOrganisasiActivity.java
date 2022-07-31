@@ -3,24 +3,28 @@ package himtiumt.co.id.himtiapps.strukturOrganisasi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import himtiumt.co.id.himtiapps.R;
 import himtiumt.co.id.himtiapps.databinding.ActivityStrukturOrganisasiBinding;
+import himtiumt.co.id.himtiapps.home.MainActivity;
+import himtiumt.co.id.himtiapps.home.MainActivity;
+import himtiumt.co.id.himtiapps.network.ApiConfig;
 import himtiumt.co.id.himtiapps.strukturOrganisasi.adapter.StrukturOrganisasiAdapter;
-import himtiumt.co.id.himtiapps.strukturOrganisasi.model.StrukturOrganisasi;
+import himtiumt.co.id.himtiapps.strukturOrganisasi.model.PengurusItem;
+import himtiumt.co.id.himtiapps.strukturOrganisasi.model.ResponseStrukturOrganisasi;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StrukturOrganisasiActivity extends AppCompatActivity {
 
     private ActivityStrukturOrganisasiBinding binding ;
-    private List<StrukturOrganisasi> strukturOrganisasiListBPH;
-    private  List<StrukturOrganisasi> strukturOrganisasiListKadiv;
     private StrukturOrganisasiAdapter strukturOrganisasiAdapter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,48 +32,40 @@ public class StrukturOrganisasiActivity extends AppCompatActivity {
        binding = ActivityStrukturOrganisasiBinding.inflate(getLayoutInflater());
        setContentView(binding.getRoot());
 
-        setupListBPH();
-
-        binding.rvStrukturOrganisasiBPH.setHasFixedSize(true);
+        binding.rvStrukturOrganisasi.setHasFixedSize(true);
         GridLayoutManager gridLayoutManagerBPH = new GridLayoutManager(StrukturOrganisasiActivity.this,
                 2, GridLayoutManager.VERTICAL, false);
-        binding.rvStrukturOrganisasiBPH.setLayoutManager(gridLayoutManagerBPH);
+        binding.rvStrukturOrganisasi.setLayoutManager(gridLayoutManagerBPH);
 
-        setupListKadiv();
+        binding.ivBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(StrukturOrganisasiActivity.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
 
-        binding.rvStrukturOrganisasiKadiv.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManagerKadiv = new GridLayoutManager(StrukturOrganisasiActivity.this,
-                3, GridLayoutManager.VERTICAL, false);
-        binding.rvStrukturOrganisasiKadiv.setLayoutManager(gridLayoutManagerKadiv);
+        ApiConfig.service.getStrukturOrganisasi().enqueue(new Callback<ResponseStrukturOrganisasi>() {
+            @Override
+            public void onResponse(Call<ResponseStrukturOrganisasi> call, Response<ResponseStrukturOrganisasi> response) {
+                if (response.isSuccessful()) {
+                    ResponseStrukturOrganisasi responseStrukturOrganisasi = response.body();
+                    List<PengurusItem> result = responseStrukturOrganisasi.getPengurus();
+                    strukturOrganisasiAdapter = new StrukturOrganisasiAdapter(StrukturOrganisasiActivity.this, result);
+                    binding.rvStrukturOrganisasi.setAdapter(strukturOrganisasiAdapter);
+                } else {
+                    Toast.makeText(StrukturOrganisasiActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResponseStrukturOrganisasi> call, Throwable t) {
+                Toast.makeText(StrukturOrganisasiActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
     }
 
-    private void setupListKadiv() {
-        strukturOrganisasiListKadiv = new ArrayList<>();
-
-        strukturOrganisasiListKadiv.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Aji Saipudin", "1955201057", "Ketua Divisi SDM"));
-        strukturOrganisasiListKadiv.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Nur Fakhri Arif", "1955201193", "Ketua Divisi Organisasi"));
-        strukturOrganisasiListKadiv.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Kaimdin Latupuno", "1955201027", "ketua Divisi Kominfo"));
-        strukturOrganisasiListKadiv.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Rif'an Fathurrohman", "1955201205", "Ketua Divisi Litbang"));
-        strukturOrganisasiListKadiv.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Rendi Ferdian", "1955201205", "Ketua Divisi Dana Usaha"));
-
-
-        strukturOrganisasiAdapter = new StrukturOrganisasiAdapter(StrukturOrganisasiActivity.this, strukturOrganisasiListKadiv);
-        binding.rvStrukturOrganisasiKadiv.setAdapter(strukturOrganisasiAdapter);
-    }
-
-    private void setupListBPH() {
-        strukturOrganisasiListBPH = new ArrayList<>();
-
-        strukturOrganisasiListBPH.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Rafi Ramadhan", "1955201124", "Bupati"));
-        strukturOrganisasiListBPH.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Khoirul Fajar aswar", "1955201071", "Wakil Bupati"));
-        strukturOrganisasiListBPH.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Nadila Pilar Kencana", "1955201171", "Sekretaris"));
-        strukturOrganisasiListBPH.add(new StrukturOrganisasi(R.drawable.ic_launcher_background, "Terry Antikasari", "1955201221", "Bendahara"));
-
-        strukturOrganisasiAdapter = new StrukturOrganisasiAdapter(StrukturOrganisasiActivity.this, strukturOrganisasiListBPH);
-        binding.rvStrukturOrganisasiBPH.setAdapter(strukturOrganisasiAdapter);
-    }
 }
