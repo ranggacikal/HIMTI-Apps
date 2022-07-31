@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".authentication.ResetKataSandi.ResetKataSandi">
+
+    <ImageView
+        android:id="@+id/ClickReturn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/ic_baseline_arrow_backblue" />
+
+    <ImageView
+        android:id="@+id/ImageResetPassword"
+        android:layout_width="174dp"
+        android:layout_height="177dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="93dp"
+        android:src="@drawable/zyro_resetpassword" />
+
+    <TextView
+        android:id="@+id/ResetkataSandi"
+        android:layout_width="191dp"
+        android:layout_height="33dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="358dp"
+        android:fontFamily="@font/poppins_extrabold"
+        android:text="Reset Kata Sandi"
+        android:textColor="@color/darkblue"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/Description1"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="375dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="297dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="left"
+        android:hint="Masukkan email lalu kata sandi baru yang kamu inginkan "
+        android:paddingRight="8dp"
+        android:textColorHint="@color/black"
+        android:textSize="14sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/MateriaResetEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageResetPassword"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="40dp"
+        app:helperTextTextColor="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/textInputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:background="@drawable/inputbutton"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/MateriaPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageResetPassword"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="223dp"
+        android:layout_marginEnd="40dp"
+        app:helperTextTextColor="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/textInputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kata Sandi Baru"
+            android:background="@drawable/inputbutton"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/MateriaPassword1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageResetPassword"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginEnd="40dp"
+        app:helperTextTextColor="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/textInputPassword1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Konfirmasi Kata Sandi Baru"
+            android:background="@drawable/inputbutton"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/MaterialSimpan"
+        android:layout_width="315dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/ImageResetPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="360dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/darkblue"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Simpan"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</RelativeLayout>
