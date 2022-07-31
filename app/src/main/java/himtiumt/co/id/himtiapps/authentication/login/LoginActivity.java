@@ -141,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("id", id );
+                        editor.putString("usernamw", name);
                         editor.putString("email", email);
                         editor.putString("notelephone", notelephone);
                         editor.apply();
