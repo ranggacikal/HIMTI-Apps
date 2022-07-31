@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authentication.register.KebijakanPrivasi.SyaratKetentuan">
+
+    <ImageView
+        android:id="@+id/ClickReturns2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="31dp"
+        android:background="@drawable/ic_baseline_arrow_backblue" />
+
+    <TextView
+        android:id="@+id/syaratDanKetentuan"
+        android:layout_width="159dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="112dp"
+        android:gravity="center"
+        android:text="Syarat dan Ketentuan"
+        android:textColor="@color/darkblue"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/ClickReturns2"
+        android:layout_marginTop="10dp"
+        android:background="@color/darkgray"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/selamatDatang"
+        android:layout_width="159dp"
+        android:layout_height="24dp"
+        android:layout_below="@id/syaratDanKetentuan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:text="Selamat datang di Himti Apps"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/himtiApps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selamatDatang"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:justificationMode="inter_word"
+        android:text="Himti Apps adalah aplikasi yang 60 dibuat oleh Himpunan Mahasiswa Teknik Informatika Universitas Muhammdiyah Tangerang, untuk memudahkan Mahasiswa di lingkungan Internal maupun eksternal Kampus terhubung dengan organisasi Himti UMT."
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/sebelumMenggunakan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/himtiApps"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:justificationMode="inter_word"
+        android:text="Sebelum menggunakan aplikasi Himti Apps,kami menyarankan agar anda terlebih dahulu membaca dan memahami syarat dan ketentuan yang berlaku. "
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/syaratKetentuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sebelumMenggunakan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:justificationMode="inter_word"
+        android:text="Syarat dan ketentuan ini dapat diubah sewaktu-waktu tanpa pemberitahuan terlebih dahulu."
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/KetentuanRegistrasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/syaratKetentuan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:justificationMode="inter_word"
+        android:text="A. Ketentuan Registrasi Dan Akses Pada Aplikasi"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/untukDapat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/KetentuanRegistrasi"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:justificationMode="inter_word"
+        android:text="1. Untuk dapat menggunakan Himti Apps, anda diharuskan menjadi pengguna Himti Apps dengan memahami dan menyetujui untuk mematuhi hal hal berikut :"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/akunAnda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/untukDapat"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="23dp"
+        android:justificationMode="inter_word"
+        android:text="2. Akun anda adalah milik Himti Apps, Himti Apps memiliki hak sepenuhnya atas akun tersebut. Apabila terjadi penyalah gunaan pada akun tersebut, kami berhak untuk mengambil keputusan untuk menyelesaikan masalah tersebut.
+    Anda diperbolehkan memilih dan memakai nama Akun, dengan ketentuan :"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/tidakMemilih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/akunAnda"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="23dp"
+        android:justificationMode="inter_word"
+        android:text="a. Tidak memilih dan memakai nama Akun dengan nama orang lain dengan tujuan untuk meniru atau bertindak sebagai orang lain."
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/memakaiNama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tidakMemilih"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="23dp"
+        android:justificationMode="inter_word"
+        android:text="b. Tidak memilih dan memakai nama akun dengan nama yang menyinggung,tidak sopan,ataupun,bertentangan dengan norma-norma kesopanan."
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/AndaBertanggung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/memakaiNama"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="23dp"
+        android:justificationMode="inter_word"
+        android:text="3. Anda bertanggung jawab atas kebenaran       data-data/identitas yang disampaikan kepada Himti Apps dalam melakukan pendaftaran/registrasi."
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+</RelativeLayout>

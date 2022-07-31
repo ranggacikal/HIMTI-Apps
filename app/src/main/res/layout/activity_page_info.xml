@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".authentication.login.PageInfo">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/MaterialSkip"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="70dp"
         android:layout_marginBottom="50dp"
         android:fontFamily="@font/poppins_regular"
         android:text="Skip"
@@ -19,7 +20,7 @@
         android:textStyle="bold"
         app:cornerRadius="5dp"
         android:textAllCaps="false"
-        android:backgroundTint="@color/darkwhite"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -27,7 +28,7 @@
         android:id="@+id/MaterialNext"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/darkblue"
         android:fontFamily="@font/poppins_regular"

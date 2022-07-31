@@ -1,18 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home.MainActivity">
 
-    <TextView
+
+    <ImageView
+        android:id="@+id/gambar_biru"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="-155dp"
+        android:src="@drawable/kotak_biru_1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/foto_2"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="51dp"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/tv_nama_profile"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="57dp"
+            android:text="Rafi Ramadhan"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/Halo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="281dp"
+        android:text="HALO,"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/Selamat_Datang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="125dp"
+        android:text="Selamat datang di Himti Apps!"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="normal"
+        android:layout_below="@id/Halo"/>
+
+    <LinearLayout
+        android:layout_marginHorizontal="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_jadwal_sharing"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="250dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="43dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/darkwhite">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/kotak_1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/toga"
+                android:layout_width="50dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="33dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginEnd="44dp"
+                android:src="@drawable/toga" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toga"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="20dp"
+                android:text="Jadwal Sharing"
+                android:textColor="@color/darkblue"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_data_anggota"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="250dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="43dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/darkwhite">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/icon_anggota"
+                android:layout_width="44dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="33dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/anggota" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/icon_anggota"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="19dp"
+                android:text="Data Anggota"
+                android:textColor="@color/darkblue"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_struktur_akademik"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="43dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/darkwhite"
+        android:layout_below="@id/cv_jadwal_sharing">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/kotak_1"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/icon_struktur"
+                android:layout_width="42dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="33dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/struktur"/>
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="36dp"
+                android:layout_below="@+id/icon_struktur"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Struktur  Organisasi"
+                android:textColor="@color/darkblue"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_data_dosen"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="43dp"
+        app:cardCornerRadius="10dp"
+        android:layout_below="@id/cv_data_anggota"
+        android:backgroundTint="@color/darkwhite">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/icon_data_dosen"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="33dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/datadosen" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="96dp"
+                android:layout_marginBottom="22dp"
+                android:text="Data Dosen"
+                android:textColor="@color/darkblue"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_informasi_akademik"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="43dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/darkwhite"
+        android:layout_below="@id/cv_struktur_akademik">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/kotak_1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/icon_informasi_akademik"
+                android:layout_width="43dp"
+                android:layout_height="42dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="31dp"
+                android:src="@drawable/informasi_akademik" />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="36dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_below="@id/icon_informasi_akademik"
+                android:text="Informasi Akademik"
+                android:textColor="@color/darkblue"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_acara_himti"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="43dp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/darkwhite"
+        android:layout_below="@+id/cv_data_dosen">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_acara_himti"
+                android:layout_width="45dp"
+                android:layout_height="48dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/jadwal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_acara_himti"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="17dp"
+                android:gravity="center"
+                android:text="Acara Himti"
+                android:textColor="@color/darkblue"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
