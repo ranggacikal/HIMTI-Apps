@@ -27,7 +27,7 @@ import himtiumt.co.id.himtiapps.anggota.model.ResponseAnggotaAll;
 import himtiumt.co.id.himtiapps.anggota.model.ResponseAngkatanAnggota;
 import himtiumt.co.id.himtiapps.anggota.model.ResponseSearchAnggota;
 import himtiumt.co.id.himtiapps.databinding.ActivityAnggotaBinding;
-import himtiumt.co.id.himtiapps.home.HomeActivity;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +51,7 @@ public class AnggotaActivity extends AppCompatActivity {
         binding.rvDataAnggota.setLayoutManager(new LinearLayoutManager(this));
 
         binding.ivBackArrow.setOnClickListener(view -> {
-            Intent back = new Intent(AnggotaActivity.this, HomeActivity.class);
+            Intent back = new Intent(AnggotaActivity.this, MainActivity.class);
             startActivity(back);
             finish();
         });
@@ -86,18 +86,21 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void setUpSearch() {
-        binding.ivSearchIcon.setOnClickListener(new View.OnClickListener() {
+
+        binding.tidSearch.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
                 search(binding.tidSearch.getText().toString());
-                loadingBar.startLoadingDialog();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingBar.dismissDialog();
-                    }
-                }, 0500);
                 binding.spinTahunAngkatan.setSelection(0);
             }
 
@@ -293,7 +296,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -317,7 +319,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -341,7 +342,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -365,7 +365,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -389,7 +388,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -413,7 +411,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -437,7 +434,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -461,7 +457,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -485,7 +480,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -509,7 +503,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -533,7 +526,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAngkatanAnggota.getAnggota();
                     anggotaAngkatanAdapter = new AnggotaAngkatanAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAngkatanAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
@@ -555,7 +547,6 @@ public class AnggotaActivity extends AppCompatActivity {
                     List<AnggotaItem> result = responseAnggotaAll.getAnggota();
                     anggotaAdapter = new AnggotaAdapter(result, AnggotaActivity.this);
                     binding.rvDataAnggota.setAdapter(anggotaAdapter);
-                    binding.tidSearch.getText().clear();
                 } else {
                     Toast.makeText(AnggotaActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
