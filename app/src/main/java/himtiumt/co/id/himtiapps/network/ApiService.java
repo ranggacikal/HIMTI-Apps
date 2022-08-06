@@ -2,6 +2,8 @@ package himtiumt.co.id.himtiapps.network;
 
 import himtiumt.co.id.himtiapps.authentication.login.model.RequestLogin;
 import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
+import himtiumt.co.id.himtiapps.events.model.ResponseDetailEvent;
+import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseDetailSharing;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseSharing;
 import retrofit2.Call;
@@ -20,5 +22,11 @@ public interface ApiService {
 
     @GET("Api-detail-sharing/{id}")
     Call<ResponseDetailSharing> detailsharing(@Path("id")int id);
+
+    @GET("Api-acara")
+    Call<ResponseEvent> event();
+
+    @GET("Api-detail-acara/{id}")
+    Call<ResponseDetailEvent> detailevent(@Path("id")int id);
 
 }
