@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="himtiumt.co.id.himtiapps">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,17 +13,31 @@
         android:theme="@style/Theme.HIMTIApps"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".events.DetailEventActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sharing.DetailSharingActivity"
+            android:exported="true"></activity>
+        <activity
             android:name=".strukturOrganisasi.StrukturOrganisasiActivity"
             android:exported="false" />
         <activity
             android:name=".sharing.SharingActivity"
-            android:exported="false" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".events.EventActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".dosen.DosenActivity"
             android:exported="false" />
@@ -38,18 +52,10 @@
             android:exported="false" />
         <activity
             android:name=".home.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".authentication.login.SplashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".authentication.login.PageInfo"
             android:exported="false" />
