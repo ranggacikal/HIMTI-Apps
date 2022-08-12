@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent resetPassword = new Intent(LoginActivity.this, ResetKataSandi.class);
+                resetPassword.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(resetPassword);
             }
         });
@@ -78,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent daftarAkun = new Intent(LoginActivity.this, RegisterActivity.class);
+                daftarAkun.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(daftarAkun);
             }
         });
@@ -141,24 +143,24 @@ public class LoginActivity extends AppCompatActivity {
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("id", id );
-                        editor.putString("usernamw", name);
+                        editor.putString("username", name);
                         editor.putString("email", email);
                         editor.putString("notelephone", notelephone);
                         editor.apply();
                     } else {
                         String massage = responseLogin.getMessage();
-                        Toast.makeText(LoginActivity.this, "ya gagal dah", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, massage, Toast.LENGTH_SHORT).show();
                     }
 
                 } else{
-                    Toast.makeText(LoginActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
             }
 
             // Tidak ada Koneksi Internet
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
             }
         });
     }

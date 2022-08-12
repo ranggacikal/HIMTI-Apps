@@ -30,6 +30,7 @@ public class VerifiedAkun extends AppCompatActivity {
             public void onClick(View view) {
                 Intent backHalamanLogin = new Intent(VerifiedAkun.this, LoginActivity.class);
                 startActivity(backHalamanLogin);
+                finish();
             }
         });
     }
