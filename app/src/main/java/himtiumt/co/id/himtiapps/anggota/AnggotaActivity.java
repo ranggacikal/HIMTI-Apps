@@ -52,6 +52,7 @@ public class AnggotaActivity extends AppCompatActivity {
 
         binding.ivBackArrow.setOnClickListener(view -> {
             Intent back = new Intent(AnggotaActivity.this, MainActivity.class);
+            back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(back);
             finish();
         });
