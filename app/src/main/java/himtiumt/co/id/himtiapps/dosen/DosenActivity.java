@@ -15,7 +15,7 @@ import java.util.List;
 import himtiumt.co.id.himtiapps.R;
 import himtiumt.co.id.himtiapps.databinding.ActivityDosenBinding;
 import himtiumt.co.id.himtiapps.dosen.adapter.DosenAdapter;
-import himtiumt.co.id.himtiapps.home.HomeActivity;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.model.DosenItem;
 import himtiumt.co.id.himtiapps.model.ResponseAllDosen;
 import himtiumt.co.id.himtiapps.model.ResponseDosen;
@@ -41,8 +41,10 @@ public class DosenActivity extends AppCompatActivity {
         binding.ivBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(DosenActivity.this, HomeActivity.class);
+                Intent back = new Intent(DosenActivity.this, MainActivity.class);
+                back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(back);
+                finish();
             }
         });
 
