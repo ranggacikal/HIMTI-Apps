@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="230dp"
+    android:layout_height="155dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="5dp"
-    android:layout_marginVertical="5dp"
-    android:elevation="8dp"
-    app:cardCornerRadius="10dp">
+    android:layout_marginBottom="24dp"
+    android:layout_marginHorizontal="15dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,15 +14,15 @@
             android:id="@+id/iv_struktur_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_centerHorizontal="true"/>
+            android:src="@drawable/default_profile" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:layout_centerVertical="true"
             android:layout_below="@id/iv_struktur_profile">
 
@@ -32,34 +30,24 @@
                 android:id="@+id/tv_struktur_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="2dp"
                 android:text="Nama Lengkap"
+                android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="17sp" />
-
-            <TextView
-                android:id="@+id/tv_struktur_nim"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="2dp"
-                android:text="Nim"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="17sp" />
+                android:textColor="#3F3F3F"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_jabatan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="2dp"
                 android:text="Jabatan"
+                android:fontFamily="@font/poppins_regular"
                 android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="17sp" />
+                android:textColor="#0C159F"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

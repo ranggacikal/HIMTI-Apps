@@ -35,7 +35,6 @@ public class StrukturOrganisasiAdapter extends RecyclerView.Adapter<StrukturOrga
     @Override
     public void onBindViewHolder(@NonNull StrukturViewHolder holder, int position) {
         holder.tvSnama.setText(pengurusItems.get(position).getNama());
-        holder.tvSnim.setText(pengurusItems.get(position).getNim());
         holder.tvSjabatan.setText(pengurusItems.get(position).getJabatan());
 
     }
@@ -48,13 +47,11 @@ public class StrukturOrganisasiAdapter extends RecyclerView.Adapter<StrukturOrga
     public class StrukturViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvSnama;
-        TextView tvSnim;
         TextView tvSjabatan;
 
         public StrukturViewHolder(@NonNull View itemView) {
             super(itemView);
             tvSnama = itemView.findViewById(R.id.tv_struktur_nama);
-            tvSnim = itemView.findViewById(R.id.tv_struktur_nim);
             tvSjabatan = itemView.findViewById(R.id.tv_jabatan);
         }
     }

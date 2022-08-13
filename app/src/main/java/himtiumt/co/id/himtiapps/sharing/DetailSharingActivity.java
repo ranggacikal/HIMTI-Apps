@@ -27,7 +27,10 @@ public class DetailSharingActivity extends AppCompatActivity {
 
         binding.arrowDetailSharing.setOnClickListener(View ->{
             Intent back = new Intent(this, SharingActivity.class);
+            back.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(back);
+            finish();
+
         });
 
         int id = getIntent().getIntExtra("id", 0);
@@ -66,5 +69,10 @@ public class DetailSharingActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

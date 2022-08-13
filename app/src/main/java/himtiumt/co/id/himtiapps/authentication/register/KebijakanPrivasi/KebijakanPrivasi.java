@@ -1,4 +1,4 @@
-package himtiumt.co.id.himtiapps.home;
+package himtiumt.co.id.himtiapps.authentication.register.KebijakanPrivasi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,14 +6,11 @@ import android.os.Bundle;
 
 import himtiumt.co.id.himtiapps.R;
 
-public class HomeActivity extends AppCompatActivity {
+public class KebijakanPrivasi extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
-        // Eliminate ActionBar
-        getSupportActionBar().hide();
+        setContentView(R.layout.activity_kebijakan_privasi);
     }
 }

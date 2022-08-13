@@ -32,9 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Eliminate ActionBar
-        getSupportActionBar().hide();
-
         // Hooks
         returnRegister = findViewById(R.id.ClickReturns);
 

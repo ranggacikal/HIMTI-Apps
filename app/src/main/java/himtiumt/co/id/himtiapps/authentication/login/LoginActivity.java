@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SharedMemory;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -24,11 +25,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import himtiumt.co.id.himtiapps.R;
+import himtiumt.co.id.himtiapps.UI.LoadingBar;
 import himtiumt.co.id.himtiapps.authentication.ResetKataSandi.ResetKataSandi;
 import himtiumt.co.id.himtiapps.authentication.login.model.RequestLogin;
 import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
 import himtiumt.co.id.himtiapps.authentication.register.RegisterActivity;
-import himtiumt.co.id.himtiapps.home.HomeActivity;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,13 +43,13 @@ public class LoginActivity extends AppCompatActivity {
     Button btnMasuk;
     ProgressBar progressBar;
     private SharedPreferences sharedPreferences;
+    final LoadingBar loadingBar = new LoadingBar(LoginActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().hide();
         sharedPreferences = getSharedPreferences("myapp-data", MODE_PRIVATE);
 
         eTextEmail = findViewById(R.id.ti_email);
@@ -57,6 +59,12 @@ public class LoginActivity extends AppCompatActivity {
         btnMasuk = findViewById(R.id.btn_masuk);
         progressBar = findViewById(R.id.pb_LoadingPage);
         tvProgressBar = findViewById(R.id.tv_LoadingPage);
+
+        sharedPreferences = getSharedPreferences("SHARED_PREF", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        int position = 1;
+        editor.putInt("position",position);
+        editor.apply();
 
         tvLupaPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +94,16 @@ public class LoginActivity extends AppCompatActivity {
             eTextEmail.setError("NIM Tidak Boleh Kosong");
         } else if (TextUtils.isEmpty(password)) {
             eTextPassword.setError("NIM Tidak Boleh Kosong");
+        } else {
+            loadingBar.startLoadingDialog();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    loadingBar.dismissDialog();
+                }
+            }, 1000);
         }
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -118,11 +136,12 @@ public class LoginActivity extends AppCompatActivity {
                         // next logic
 
                         // intent ke Home
-                        Intent LandingPage = new Intent(LoginActivity.this, HomeActivity.class);
+                        Intent LandingPage = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(LandingPage);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("id", id );
+                        editor.putString("usernamw", name);
                         editor.putString("email", email);
                         editor.putString("notelephone", notelephone);
                         editor.apply();
@@ -142,6 +161,5 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

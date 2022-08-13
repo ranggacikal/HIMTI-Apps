@@ -6,22 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".strukturOrganisasi.StrukturOrganisasiActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_struktur_organisasi_BPH"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/iv_back_arrow"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        tools:listitem="@layout/item_struktur_organisasi" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/ic_baseline_arrow_backblue" />
+
+    <TextView
+        android:id="@+id/tv_struktur_organisasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Struktur Organisasi"
+        android:textColor="#0C159F"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_struktur_organisasi_Kadiv"
+        android:id="@+id/rv_struktur_organisasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rv_struktur_organisasi_BPH"
-        android:layout_margin="5dp"
-        tools:listitem="@layout/item_struktur_organisasi"/>
+        android:layout_below="@+id/tv_struktur_organisasi"
+        android:layout_marginTop="66dp"
+        tools:listitem="@layout/item_struktur_organisasi" />
 
 </RelativeLayout>
