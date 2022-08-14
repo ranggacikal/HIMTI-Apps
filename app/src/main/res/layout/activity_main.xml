@@ -91,7 +91,7 @@
                 android:layout_height="43dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="33dp"
-                android:src="@drawable/toga" />
+                android:src="@drawable/wisuda" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -34,9 +34,9 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         sharedPreferences=getSharedPreferences("SHARED_PREF", MODE_PRIVATE);
-        String name = sharedPreferences.getString("name","");
+        String name = sharedPreferences.getString("username","");
         String email = sharedPreferences.getString("email","");
-        String no_telp =sharedPreferences.getString("no_telp","");
+        String no_telp =sharedPreferences.getString("notelephone","");
         binding.tvNama.setText(name);
         binding.etUsername.setHint(name);
         binding.etEmail.setHint(email);
@@ -77,9 +77,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         sharedPreferences=getSharedPreferences("SHARED_PREF", MODE_PRIVATE);
-        String name = sharedPreferences.getString("name","");
+        String name = sharedPreferences.getString("username","");
         String email = sharedPreferences.getString("email","");
-        String no_telp =sharedPreferences.getString("no_telp","");
+        String no_telp =sharedPreferences.getString("notelephone","");
         binding.tvNama.setText(name);
         binding.etUsername.setHint(name);
         binding.etEmail.setHint(email);
