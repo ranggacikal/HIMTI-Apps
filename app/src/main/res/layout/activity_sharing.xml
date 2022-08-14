@@ -13,7 +13,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="38dp"
-        android:src="@drawable/ic_baseline_west" />
+        android:src="@drawable/ic_baseline_arrow_backblue" />
 
 
     <TextView
