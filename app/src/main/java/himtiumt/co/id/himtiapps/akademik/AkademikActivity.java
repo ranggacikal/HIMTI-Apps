@@ -29,6 +29,7 @@ public class AkademikActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(AkademikActivity.this, MainActivity.class);
+                back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(back);
                 finish();
             }
