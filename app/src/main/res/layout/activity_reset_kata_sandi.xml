@@ -87,7 +87,7 @@
             android:hint="Email"
             android:background="@drawable/inputbutton"
             android:imeOptions="actionDone"
-            android:inputType="textPassword" />
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

@@ -14,10 +14,12 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".authentication.register.KebijakanPrivasi.KebijakanPrivasi"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".authentication.register.KebijakanPrivasi.SyaratKetentuan"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".authentication.ResetKataSandi.VerifiedAkun"
             android:exported="false"

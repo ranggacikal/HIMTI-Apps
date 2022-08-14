@@ -17,9 +17,7 @@
         android:layout_marginStart="95dp"
         android:layout_marginTop="127dp"
         android:layout_marginEnd="95dp"
-        android:src="@drawable/zyro_verified"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp" />
+        android:src="@drawable/zyro_verified" />
 
     <TextView
         android:id="@+id/SukseskataSandiBaru"

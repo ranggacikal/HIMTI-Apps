@@ -193,40 +193,73 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tv_KebijakanPrivasi"
-        android:layout_width="259dp"
+        android:id="@+id/saya_setuju"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/MateriaKonfirmasiPasswords"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="54dp"
-        android:hint="Saya setuju dengan Syarat dan Ketentuan dan Kebijakan Privasi"
-        android:padding="8dp"
-        android:textSize="12sp"
-        android:textStyle="normal" />
+        android:layout_marginTop="29dp"
+        android:layout_toEndOf="@+id/cb_KebijakanPrivasi"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Saya setuju dengan"
+        android:textColor="#767676"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/syarat_ketentua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MateriaKonfirmasiPasswords"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="29dp"
+        android:layout_toEndOf="@+id/saya_setuju"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Syarat dan Ketentuan"
+        android:textColor="#0C159F"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MateriaKonfirmasiPasswords"
+        android:layout_marginTop="29dp"
+        android:layout_toEndOf="@+id/syarat_ketentua"
+        android:fontFamily="@font/poppins_regular"
+        android:text="dan"
+        android:textColor="#767676"
+        android:textSize="10sp"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:id="@+id/kebijakan_privasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/saya_setuju"
+        android:layout_toEndOf="@+id/cb_KebijakanPrivasi"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Kebijakan Privasi"
+        android:textColor="#0C159F"
+        android:textSize="10sp"
+        android:textStyle="bold" />
 
     <CheckBox
         android:id="@+id/cb_KebijakanPrivasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/MateriaKonfirmasiPasswords"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginStart="58dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="305dp" />
+        android:buttonTint="#0C159F"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mb_daftar_akun"
-        android:layout_width="315dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="40dp"
         android:layout_marginTop="648dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/darkblue"
         android:fontFamily="@font/poppins_regular"
