@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent jadwalSharing = new Intent(MainActivity.this, SharingActivity.class);
+                jadwalSharing.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(jadwalSharing);
             }
         });
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent dataAnggota = new Intent(MainActivity.this, AnggotaActivity.class);
+                dataAnggota.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(dataAnggota);
             }
         });
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent strukturAkademik = new Intent(MainActivity.this, StrukturOrganisasiActivity.class);
+                strukturAkademik.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(strukturAkademik);
             }
         });
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent dataDosen = new Intent(MainActivity.this, DosenActivity.class);
+                dataDosen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(dataDosen);
             }
         });
@@ -82,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
        binding.cvInformasiAkademik.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               Intent informasiAkademik = new Intent(MainActivity.this, AkademikActivity.class);
+               informasiAkademik.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(informasiAkademik);
+               finish();
                Intent intent = new Intent(MainActivity.this, AkademikActivity.class);
                startActivity(intent);
            }
@@ -91,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent acaraHimti = new Intent(MainActivity.this, EventActivity.class);
+                acaraHimti.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(acaraHimti);
             }
         });
