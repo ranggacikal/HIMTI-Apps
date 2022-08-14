@@ -6,9 +6,13 @@ import himtiumt.co.id.himtiapps.authentication.login.model.RequestLogin;
 import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
 import himtiumt.co.id.himtiapps.authentication.register.Model.RequestRegister;
 import himtiumt.co.id.himtiapps.authentication.register.Model.ResponseRegister;
+import himtiumt.co.id.himtiapps.profile.Model.RequestProfile;
+import himtiumt.co.id.himtiapps.profile.Model.ResponseProfile;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiService {
 
@@ -20,5 +24,9 @@ public interface ApiService {
 
     @POST("Api-LupaPassword")
     Call<ResponseResetPassword> resetpassword(@Body RequestResetPassword requestResetPassword);
+
+    @PATCH("Api-edit-profile/{id}")
+    Call <ResponseProfile> getprofilebyid (@Path("id") int postid,
+                                           @Body RequestProfile requestProfile);
 
 }
