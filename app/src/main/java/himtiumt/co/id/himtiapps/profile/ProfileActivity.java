@@ -146,16 +146,17 @@ public class ProfileActivity extends AppCompatActivity {
                     boolean sukses = responseProfile.isStatus();
                     if (sukses) {
                         String name = responseProfile.getProfilUpdate().getName();
-                        String noHp = responseProfile.getProfilUpdate().getNoHp();
+                        String notelp = responseProfile.getProfilUpdate().getNoHp();
                         String pesanberhasil = responseProfile.getMessage();
                         Toast.makeText(ProfileActivity.this, pesanberhasil, Toast.LENGTH_SHORT).show();
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("name", name);
-                        editor.putString("no_telp",noHp);
+                        editor.putString("username", name);
+                        editor.putString("notelephone",notelp);
                         editor.apply();
 
                         Intent simpanBerhasil = new Intent(ProfileActivity.this,MainActivity.class);
+                        simpanBerhasil.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(simpanBerhasil);
                         finish();
 
