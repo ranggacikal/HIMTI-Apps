@@ -30,7 +30,7 @@ import himtiumt.co.id.himtiapps.authentication.ResetKataSandi.ResetKataSandi;
 import himtiumt.co.id.himtiapps.authentication.login.model.RequestLogin;
 import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
 import himtiumt.co.id.himtiapps.authentication.register.RegisterActivity;
-import himtiumt.co.id.himtiapps.home.HomeActivity;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                         // next logic
 
                         // intent ke Home
-                        Intent LandingPage = new Intent(LoginActivity.this, HomeActivity.class);
+                        Intent LandingPage = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(LandingPage);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
