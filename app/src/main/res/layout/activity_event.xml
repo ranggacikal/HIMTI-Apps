@@ -8,11 +8,11 @@
 
     <ImageView
         android:id="@+id/arrow_jadwal_event"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="38dp"
-        android:src="@drawable/ic_baseline_west"/>
+        android:src="@drawable/ic_baseline_arrow_backblue"/>
 
     <TextView
         android:id="@+id/txt_jadwal_event"
@@ -20,17 +20,18 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
-        android:fontFamily="@font/poppins_extrabold"
+        android:fontFamily="@font/poppins_regular"
         android:text="Acara Himti"
         android:textColor="#0C159F"
         android:textSize="22sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview_event"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/txt_jadwal_event"
+        android:layout_marginTop="1dp"
         tools:listitem="@layout/item_event_himti" />
 
 </RelativeLayout>

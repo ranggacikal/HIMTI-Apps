@@ -39,7 +39,7 @@
                     android:layout_marginTop="75dp"
                     android:fontFamily="@font/poppins_extrabold"
                     android:text="Event"
-                    android:textColor="#E47E7E"
+                    android:textColor="#FFFFFF"
                     android:textSize="19dp"/>
 
                 <TextView
@@ -49,7 +49,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="100dp"
                     android:text="Event Himti Rutin"
-                    android:textColor="#DA9090"/>
+                    android:textColor="#FFFFFF"/>
 
             </androidx.cardview.widget.CardView>
 

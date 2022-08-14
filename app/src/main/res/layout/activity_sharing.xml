@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/arrow_jadwal_sharing"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="38dp"
         android:src="@drawable/ic_baseline_arrow_backblue" />
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
-        android:fontFamily="@font/poppins_extrabold"
+        android:fontFamily="@font/poppins_regular"
         android:text="Sharing Himti"
         android:textColor="#0C159F"
         android:textSize="22sp"
