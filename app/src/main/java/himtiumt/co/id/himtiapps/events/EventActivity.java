@@ -14,6 +14,15 @@ import himtiumt.co.id.himtiapps.databinding.ActivityEventBinding;
 import himtiumt.co.id.himtiapps.events.adapter.EventAdapter;
 import himtiumt.co.id.himtiapps.events.model.DataArtikelItem;
 import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
+import himtiumt.co.id.himtiapps.network.ApiConfig;
+import himtiumt.co.id.himtiapps.sharing.adapter.SharingAdapter;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import himtiumt.co.id.himtiapps.databinding.ActivityEventBinding;
+import himtiumt.co.id.himtiapps.events.adapter.EventAdapter;
+import himtiumt.co.id.himtiapps.events.model.DataArtikelItem;
+import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
 import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import himtiumt.co.id.himtiapps.sharing.SharingActivity;
@@ -40,6 +49,32 @@ public class EventActivity extends AppCompatActivity {
             finish();
 
         });
+
+        binding.recycleviewEvent.setHasFixedSize(true);
+        binding.recycleviewEvent.setLayoutManager(new LinearLayoutManager(this));
+        ApiConfig.service.event().enqueue(new Callback<ResponseEvent>() {
+            @Override
+            public void onResponse(Call<ResponseEvent> call, Response<ResponseEvent> response) {
+                if (response.isSuccessful()){
+                    ResponseEvent responseEvent = response.body();
+                    List<DataArtikelItem> result = responseEvent.getDataArtikel();
+                    eventAdapter = new EventAdapter(result, EventActivity.this);
+                    binding.recycleviewEvent.setAdapter(eventAdapter);
+                }else{
+                    Toast.makeText(EventActivity.this, "Response Gagal",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseEvent> call, Throwable t) {
+                Toast.makeText(EventActivity.this, "Periksa Jarinan Anda",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        binding = ActivityEventBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         binding.recycleviewEvent.setHasFixedSize(true);
         binding.recycleviewEvent.setLayoutManager(new LinearLayoutManager(this));

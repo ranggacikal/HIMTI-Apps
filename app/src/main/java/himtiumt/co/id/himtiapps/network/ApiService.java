@@ -10,6 +10,9 @@ import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
 import himtiumt.co.id.himtiapps.strukturOrganisasi.model.ResponseStrukturOrganisasi;
 import himtiumt.co.id.himtiapps.events.model.ResponseDetailEvent;
 import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
+import himtiumt.co.id.himtiapps.events.model.ResponseDetailEvent;
+import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
+import himtiumt.co.id.himtiapps.strukturOrganisasi.model.ResponseStrukturOrganisasi;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseDetailSharing;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseSharing;
 import himtiumt.co.id.himtiapps.authentication.register.Model.RequestRegister;
@@ -51,6 +54,12 @@ public interface ApiService {
     @GET("Api-detail-sharing/{id}")
     Call<ResponseDetailSharing> detailsharing(@Path("id")int id);
 
+    @GET("Api-acara")
+    Call<ResponseEvent> event();
+
+    @GET("Api-detail-acara/{id}")
+    Call<ResponseDetailEvent> detailevent(@Path("id")int id);
+
     @POST("Api-registrasi")
     Call<ResponseRegister> register(@Body RequestRegister requestRegister);
 
@@ -66,6 +75,12 @@ public interface ApiService {
     @PATCH("Api-edit-profile/{id}")
     Call <ResponseProfile> getprofilebyid (@Path("id") int postid,
                                            @Body RequestProfile requestProfile);
+
+    @GET("Api-acara")
+    Call<ResponseEvent> event();
+
+    @GET("Api-detail-acara/{id}")
+    Call<ResponseDetailEvent> detailevent(@Path("id")int id);
 
     @GET("Api-anggota-all")
     Call<ResponseAnggotaAll> getAnggotaAll();
