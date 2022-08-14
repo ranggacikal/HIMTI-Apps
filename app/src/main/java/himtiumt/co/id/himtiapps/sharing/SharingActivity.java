@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 import himtiumt.co.id.himtiapps.R;
 import himtiumt.co.id.himtiapps.databinding.ActivitySharingBinding;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import himtiumt.co.id.himtiapps.sharing.adapter.SharingAdapter;
 import himtiumt.co.id.himtiapps.sharing.model.JadwalItem;
@@ -30,6 +32,14 @@ public class SharingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySharingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.arrowJadwalSharing.setOnClickListener(View ->{
+            Intent back = new Intent(this, MainActivity.class);
+            back.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(back);
+            finish();
+
+        });
 
         binding.recycleview.setHasFixedSize(true);
         binding.recycleview.setLayoutManager(new LinearLayoutManager(this));

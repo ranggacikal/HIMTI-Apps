@@ -8,6 +8,8 @@ import himtiumt.co.id.himtiapps.authentication.ResetKataSandi.Model.ResponseRese
 import himtiumt.co.id.himtiapps.authentication.login.model.RequestLogin;
 import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
 import himtiumt.co.id.himtiapps.strukturOrganisasi.model.ResponseStrukturOrganisasi;
+import himtiumt.co.id.himtiapps.events.model.ResponseDetailEvent;
+import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseDetailSharing;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseSharing;
 import himtiumt.co.id.himtiapps.authentication.register.Model.RequestRegister;
@@ -54,6 +56,12 @@ public interface ApiService {
 
     @POST("Api-LupaPassword")
     Call<ResponseResetPassword> resetpassword(@Body RequestResetPassword requestResetPassword);
+
+    @GET("Api-acara")
+    Call<ResponseEvent> event();
+
+    @GET("Api-detail-acara/{id}")
+    Call<ResponseDetailEvent> detailevent(@Path("id")int id);
 
     @PATCH("Api-edit-profile/{id}")
     Call <ResponseProfile> getprofilebyid (@Path("id") int postid,
