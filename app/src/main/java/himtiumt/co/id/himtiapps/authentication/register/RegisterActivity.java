@@ -60,9 +60,9 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (TextUtils.isEmpty(noHp)) {
                 binding.tiNoTelephone.setError("No. Telp Tidak Boleh Kosong");
             } else if (TextUtils.isEmpty(password)) {
-                binding.tiPasswords.setError("Password Tidak Boleh Kosong");
+                Toast.makeText(this, "Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
             } else if (!password.equals(confirmPassword)) {
-                binding.tiKonfirmasiPasswords.setError("Password Tidak Sesuai");
+                Toast.makeText(this, "Password Tidak Sesuai", Toast.LENGTH_SHORT).show();
             } else if (!binding.cbKebijakanPrivasi.isChecked()) {
                 Toast.makeText(this, "Harap Mempersetujui Syarat dan Ketentua", Toast.LENGTH_SHORT).show();
             } else {

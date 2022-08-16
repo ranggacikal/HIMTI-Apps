@@ -64,9 +64,9 @@ public class ResetKataSandi extends AppCompatActivity {
           if (TextUtils.isEmpty(Email)) {
               binding.textInputEmail.setError("Email Tidak Boleh Kosong");
           } else if (TextUtils.isEmpty(Password)) {
-              binding.textInputPassword.setError("Password Tidak Boleh Kosong");
+              Toast.makeText(this, "Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
           } else if (!Password.equals(ConfirmPassword)) {
-              binding.textInputPassword1.setError("Password Tidak Sesuai");
+              Toast.makeText(this, "Password Tidak Sesuai", Toast.LENGTH_SHORT).show();
           } else {
               resetPassword(Email,Password);
               loadingBar.startLoadingDialog();
@@ -99,6 +99,7 @@ public class ResetKataSandi extends AppCompatActivity {
                         Toast.makeText(ResetKataSandi.this, Massage, Toast.LENGTH_SHORT).show();
 
                         Intent simpanPerubahan = new Intent(ResetKataSandi.this, VerifiedAkun.class);
+                        simpanPerubahan.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(simpanPerubahan);
                         finish();
 
