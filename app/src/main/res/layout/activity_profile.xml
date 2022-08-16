@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shaping_edt"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="*****"
+                    android:hint="***********"
                     android:imeOptions="actionDone"
                     android:layout_marginHorizontal="31dp"
                     android:inputType="textPassword"
