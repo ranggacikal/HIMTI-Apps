@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".anggota.AnggotaActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/iv_back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="37dp"
+        android:src="@drawable/ic_baseline_arrow_backblue" />
+
+    <TextView
+        android:id="@+id/tv_daata_anggota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Data Anggota"
+        android:textColor="#0C159F"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_daata_anggota"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/shaping_et">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tid_search"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:hint="Cari"
+                android:paddingStart="21dp" />
+
+            <ImageView
+                android:id="@+id/iv_search_icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/new_icon_search" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/rv_spiner"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@+id/til_search"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="18dp"
+        android:elevation="20dp"
+        app:cardCornerRadius="8dp">
+
+        <Spinner
+            android:id="@+id/spin_tahun_angkatan"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:paddingStart="13dp"
+            android:spinnerMode="dialog" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_data_anggota"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rv_spiner"
+        android:layout_marginTop="7dp"
+        tools:listitem="@layout/item_anggota" />
+
+</RelativeLayout>
