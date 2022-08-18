@@ -12,7 +12,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="38dp"
-        android:src="@drawable/ic_baseline_arrow_backblue"/>
+        android:src="@drawable/ic_baseline_arrow_backblue" />
 
     <TextView
         android:id="@+id/txt_jadwal_detail_event"
@@ -28,10 +28,10 @@
         android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
-        android:layout_centerHorizontal="true"
         android:layout_width="339dp"
         android:layout_height="500dp"
         android:layout_below="@+id/txt_jadwal_detail_event"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="36dp"
         android:layout_marginTop="38dp"
         app:cardBackgroundColor="#F0F2FA"
@@ -46,137 +46,147 @@
                 android:id="@+id/image_detail_event"
                 android:layout_width="match_parent"
                 android:layout_height="172dp"
-                android:src="@drawable/image_event"/>
+                android:src="@drawable/image_event" />
 
-            <TextView
-                android:id="@+id/tv_judul_detail_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/image_detail_event"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/poppins_extrabold"
-                android:text="HIMTI FESTIVAL"
-                android:textColor="#3F3F3F"
-                android:textSize="19dp"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/image_detail_event">
 
-            <TextView
-                android:id="@+id/tv_deskripsi_detail_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_judul_detail_event"
-                android:layout_marginStart="20dp"
-                android:text="Kegiatan Tahunan Himti Yang Terdiri Dari Berbagai Acara"
-                android:textColor="#3F3F3F" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/img_date_event"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_below="@+id/tv_deskripsi_detail_event"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/date"/>
+                    <TextView
+                        android:id="@+id/tv_judul_detail_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins_extrabold"
+                        android:text="HIMTI FESTIVAL"
+                        android:textColor="#3F3F3F"
+                        android:textSize="19dp" />
 
-            <TextView
-                android:id="@+id/txt_tanggal_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_deskripsi_detail_event"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="15dp"
-                android:layout_toEndOf="@+id/img_date_event"
-                android:fontFamily="@font/poppins_light"
-                android:text="Hari/Tanggal"
-                android:textColor="#3F3F3F"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tv_deskripsi_detail_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_judul_detail_event"
+                        android:layout_marginStart="20dp"
+                        android:text="Kegiatan Tahunan Himti Yang Terdiri Dari Berbagai Acara"
+                        android:textColor="#3F3F3F" />
 
-            <TextView
-                android:id="@+id/tv_jadwal_detail_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_tanggal_event"
-                android:layout_marginStart="12dp"
-                android:layout_toEndOf="@+id/img_date_event"
-                android:fontFamily="@font/poppins_light"
-                android:text="Minggu, 21 Agustus 2022"
-                android:textColor="#3F3F3F"
-                android:textSize="12sp"/>
+                    <ImageView
+                        android:id="@+id/img_date_event"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/tv_deskripsi_detail_event"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/date" />
 
-            <ImageView
-                android:id="@+id/img_pemateri_detail_event"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_below="@+id/tv_jadwal_detail_event"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/logouser"/>
+                    <TextView
+                        android:id="@+id/txt_tanggal_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_deskripsi_detail_event"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toEndOf="@+id/img_date_event"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Hari/Tanggal"
+                        android:textColor="#3F3F3F"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt_pemateri_detail_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_jadwal_detail_event"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="15dp"
-                android:layout_toEndOf="@+id/img_pemateri_detail_event"
-                android:fontFamily="@font/poppins_light"
-                android:text="Pengisi Acara"
-                android:textColor="#3F3F3F"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tv_jadwal_detail_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_tanggal_event"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/img_date_event"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Minggu, 21 Agustus 2022"
+                        android:textColor="#3F3F3F"
+                        android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tv_pemateri_detail_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_pemateri_detail_event"
-                android:layout_marginStart="12dp"
-                android:layout_toEndOf="@+id/img_pemateri_detail_event"
-                android:fontFamily="@font/poppins_light"
-                android:text="Arief Wirmansyah"
-                android:textColor="#3F3F3F"
-                android:textSize="12sp"/>
+                    <ImageView
+                        android:id="@+id/img_pemateri_detail_event"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/tv_jadwal_detail_event"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/logouser" />
 
-            <ImageView
-                android:id="@+id/img_lokasi_detail_event"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_below="@+id/tv_pemateri_detail_event"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="14dp"
-                android:src="@drawable/lokasi_event"/>
+                    <TextView
+                        android:id="@+id/txt_pemateri_detail_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_jadwal_detail_event"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toEndOf="@+id/img_pemateri_detail_event"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Pengisi Acara"
+                        android:textColor="#3F3F3F"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt_lokasi_detail_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_pemateri_detail_event"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="15dp"
-                android:layout_toEndOf="@+id/img_pemateri_detail_event"
-                android:fontFamily="@font/poppins_light"
-                android:text="Lokasi"
-                android:textColor="#3F3F3F"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tv_pemateri_detail_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_pemateri_detail_event"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/img_pemateri_detail_event"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Arief Wirmansyah"
+                        android:textColor="#3F3F3F"
+                        android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tv_lokasi_detail_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_lokasi_detail_event"
-                android:layout_marginStart="12dp"
-                android:layout_toEndOf="@+id/img_lokasi_detail_event"
-                android:fontFamily="@font/poppins_light"
-                android:text="Aula Universitas Muhammadiyah Tangerang"
-                android:textColor="#3F3F3f"
-                android:textSize="12sp"/>
+                    <ImageView
+                        android:id="@+id/img_lokasi_detail_event"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/tv_pemateri_detail_event"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="14dp"
+                        android:src="@drawable/lokasi_event" />
 
+                    <TextView
+                        android:id="@+id/txt_lokasi_detail_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_pemateri_detail_event"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toEndOf="@+id/img_pemateri_detail_event"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Lokasi"
+                        android:textColor="#3F3F3F"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_lokasi_detail_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_lokasi_detail_event"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/img_lokasi_detail_event"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Aula Universitas Muhammadiyah Tangerang"
+                        android:textColor="#3F3F3f"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+            </ScrollView>
 
         </RelativeLayout>
-
 
     </androidx.cardview.widget.CardView>
 

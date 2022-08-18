@@ -39,12 +39,6 @@ public interface ApiService {
     @GET("Api-detail-sharing/{id}")
     Call<ResponseDetailSharing> detailsharing(@Path("id")int id);
 
-    @GET("Api-acara")
-    Call<ResponseEvent> event();
-
-    @GET("Api-detail-acara/{id}")
-    Call<ResponseDetailEvent> detailevent(@Path("id")int id);
-
     @POST("Api-registrasi")
     Call<ResponseRegister> register(@Body RequestRegister requestRegister);
 
