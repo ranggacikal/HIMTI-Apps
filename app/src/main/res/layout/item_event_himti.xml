@@ -29,7 +29,8 @@
                     android:id="@+id/img_jadwal_event"
                     android:layout_width="303dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/image_event" />
+                    android:src="@drawable/image_event"
+                    android:scaleType="fitXY"/>
 
                 <TextView
                     android:id="@+id/tv_judul_event"

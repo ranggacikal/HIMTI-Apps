@@ -30,7 +30,8 @@
                     android:id="@+id/img_jadwal_sharing"
                     android:layout_width="303dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/image_sharing" />
+                    android:src="@drawable/image_sharing"
+                    android:scaleType="fitXY"/>
 
                 <TextView
                     android:id="@+id/tv_judul_sharing"
