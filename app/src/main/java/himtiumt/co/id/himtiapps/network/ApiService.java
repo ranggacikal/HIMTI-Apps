@@ -60,12 +60,6 @@ public interface ApiService {
     @POST("Api-LupaPassword")
     Call<ResponseResetPassword> resetpassword(@Body RequestResetPassword requestResetPassword);
 
-    @GET("Api-acara")
-    Call<ResponseEvent> event();
-
-    @GET("Api-detail-acara/{id}")
-    Call<ResponseDetailEvent> detailevent(@Path("id")int id);
-
     @PATCH("Api-edit-profile/{id}")
     Call <ResponseProfile> getprofilebyid (@Path("id") int postid,
                                            @Body RequestProfile requestProfile);
