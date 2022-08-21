@@ -68,4 +68,8 @@ public class StrukturOrganisasiActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

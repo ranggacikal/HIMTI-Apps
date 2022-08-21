@@ -10,14 +10,12 @@ import android.view.View;
 import himtiumt.co.id.himtiapps.R;
 import himtiumt.co.id.himtiapps.akademik.AkademikActivity;
 import himtiumt.co.id.himtiapps.anggota.AnggotaActivity;
-import himtiumt.co.id.himtiapps.anggota.model.DataAnggota;
 import himtiumt.co.id.himtiapps.databinding.ActivityMainBinding;
 import himtiumt.co.id.himtiapps.dosen.DosenActivity;
 import himtiumt.co.id.himtiapps.events.EventActivity;
 import himtiumt.co.id.himtiapps.profile.ProfileActivity;
 import himtiumt.co.id.himtiapps.sharing.SharingActivity;
 import himtiumt.co.id.himtiapps.strukturOrganisasi.StrukturOrganisasiActivity;
-import himtiumt.co.id.himtiapps.strukturOrganisasi.model.StrukturOrganisasi;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent jadwalSharing = new Intent(MainActivity.this, SharingActivity.class);
                 startActivity(jadwalSharing);
-                finish();
             }
         });
 
@@ -63,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent dataAnggota = new Intent(MainActivity.this, AnggotaActivity.class);
                 startActivity(dataAnggota);
-                finish();
             }
         });
 
@@ -72,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent strukturAkademik = new Intent(MainActivity.this, StrukturOrganisasiActivity.class);
                 startActivity(strukturAkademik);
-                finish();
             }
         });
 
@@ -81,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent dataDosen = new Intent(MainActivity.this, DosenActivity.class);
                 startActivity(dataDosen);
-                finish();
             }
         });
 
@@ -90,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
            public void onClick(View view) {
                Intent intent = new Intent(MainActivity.this, AkademikActivity.class);
                startActivity(intent);
-               finish();
            }
        });
 
@@ -99,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent acaraHimti = new Intent(MainActivity.this, EventActivity.class);
                 startActivity(acaraHimti);
-                finish();
             }
         });
 

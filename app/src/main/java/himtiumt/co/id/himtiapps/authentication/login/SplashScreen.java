@@ -12,7 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import himtiumt.co.id.himtiapps.R;
-import himtiumt.co.id.himtiapps.home.HomeActivity;
+import himtiumt.co.id.himtiapps.home.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -51,7 +51,7 @@ public class SplashScreen extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent SplashScreen = new Intent(SplashScreen.this, HomeActivity.class);
+                    Intent SplashScreen = new Intent(SplashScreen.this, MainActivity.class);
                     startActivity(SplashScreen);
                     finish();
                 }
