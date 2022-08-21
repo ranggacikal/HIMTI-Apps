@@ -7,6 +7,10 @@ import himtiumt.co.id.himtiapps.authentication.ResetKataSandi.Model.RequestReset
 import himtiumt.co.id.himtiapps.authentication.ResetKataSandi.Model.ResponseResetPassword;
 import himtiumt.co.id.himtiapps.authentication.login.model.RequestLogin;
 import himtiumt.co.id.himtiapps.authentication.login.model.ResponseLogin;
+import himtiumt.co.id.himtiapps.events.model.ResponseDetailEvent;
+import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
+import himtiumt.co.id.himtiapps.events.model.ResponseDetailEvent;
+import himtiumt.co.id.himtiapps.events.model.ResponseEvent;
 import himtiumt.co.id.himtiapps.strukturOrganisasi.model.ResponseStrukturOrganisasi;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseDetailSharing;
 import himtiumt.co.id.himtiapps.sharing.model.ResponseSharing;
@@ -40,6 +44,12 @@ public interface ApiService {
 
     @POST("Api-LupaPassword")
     Call<ResponseResetPassword> resetpassword(@Body RequestResetPassword requestResetPassword);
+
+    @GET("Api-acara")
+    Call<ResponseEvent> event();
+
+    @GET("Api-detail-acara/{id}")
+    Call<ResponseDetailEvent> detailevent(@Path("id")int id);
 
     @GET("Api-anggota-all")
     Call<ResponseAnggotaAll> getAnggotaAll();
