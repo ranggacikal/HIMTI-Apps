@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                         // next logic
 
                         // intent ke Home
-                        Intent LandingPage = new Intent(LoginActivity.this, HomeActivity.class);
+                        Intent LandingPage = new Intent(LoginActivity.this, MainActivity.class);
                         LandingPage.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(LandingPage);
 
