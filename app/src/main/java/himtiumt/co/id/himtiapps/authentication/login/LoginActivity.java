@@ -85,12 +85,12 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnMasuk.setOnClickListener(v -> {
-            login(eTextEmail.getText().toString(), eTextPassword.getText().toString());
+            validateLogin(eTextEmail.getText().toString(), eTextPassword.getText().toString());
 
         });
     }
 
-    private void login(String email, String password){
+    private void validateLogin(String email, String password){
 
         if (TextUtils.isEmpty(email)){
             eTextEmail.setError("Email Tidak Boleh Kosong");
@@ -106,8 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                     loadingBar.dismissDialog();
                 }
             }, 1000);
+            login(email, password);
         }
+    }
 
+    private void login(String email, String password) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("password", password);
         editor.apply();
@@ -129,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                     ResponseLogin responseLogin = response.body();
                     boolean success = responseLogin.isStatus();
                     if (success){
+                        loadingBar.dismissDialog();
                         int id = responseLogin.getDataLogin().getId();
                         String email = responseLogin.getDataLogin().getEmail();
                         String notelephone = responseLogin.getDataLogin().getNoHp();
@@ -149,11 +153,13 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("notelephone", notelephone);
                         editor.apply();
                     } else {
+                        loadingBar.dismissDialog();
                         String massage = responseLogin.getMessage();
                         Toast.makeText(LoginActivity.this, massage, Toast.LENGTH_SHORT).show();
                     }
 
                 } else{
+                    loadingBar.dismissDialog();
                     Toast.makeText(LoginActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -161,6 +167,7 @@ public class LoginActivity extends AppCompatActivity {
             // Tidak ada Koneksi Internet
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                loadingBar.dismissDialog();
                 Toast.makeText(LoginActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
             }
         });
