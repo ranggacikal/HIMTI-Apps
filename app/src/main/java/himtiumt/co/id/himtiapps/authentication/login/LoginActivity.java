@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent resetPassword = new Intent(LoginActivity.this, ResetKataSandi.class);
-                resetPassword.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                resetPassword.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(resetPassword);
             }
         });
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent daftarAkun = new Intent(LoginActivity.this, RegisterActivity.class);
-                daftarAkun.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                daftarAkun.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(daftarAkun);
             }
         });
@@ -93,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
     private void login(String email, String password){
 
         if (TextUtils.isEmpty(email)){
-            eTextEmail.setError("NIM Tidak Boleh Kosong");
+            eTextEmail.setError("Email Tidak Boleh Kosong");
         } else if (TextUtils.isEmpty(password)) {
-            eTextPassword.setError("NIM Tidak Boleh Kosong");
+            Toast.makeText(this, "Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
         } else {
             loadingBar.startLoadingDialog();
             Handler handler = new Handler();
@@ -139,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         // intent ke Home
                         Intent LandingPage = new Intent(LoginActivity.this, MainActivity.class);
+                        LandingPage.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(LandingPage);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
