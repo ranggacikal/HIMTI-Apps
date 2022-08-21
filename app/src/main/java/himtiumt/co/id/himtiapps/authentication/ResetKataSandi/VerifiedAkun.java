@@ -29,7 +29,9 @@ public class VerifiedAkun extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent backHalamanLogin = new Intent(VerifiedAkun.this, LoginActivity.class);
+                backHalamanLogin.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(backHalamanLogin);
+                finish();
             }
         });
     }

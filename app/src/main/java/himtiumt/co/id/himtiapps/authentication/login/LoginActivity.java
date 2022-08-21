@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent resetPassword = new Intent(LoginActivity.this, ResetKataSandi.class);
+                resetPassword.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(resetPassword);
             }
         });
@@ -78,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent daftarAkun = new Intent(LoginActivity.this, RegisterActivity.class);
+                daftarAkun.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(daftarAkun);
             }
         });
@@ -91,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
     private void login(String email, String password){
 
         if (TextUtils.isEmpty(email)){
-            eTextEmail.setError("NIM Tidak Boleh Kosong");
+            eTextEmail.setError("Email Tidak Boleh Kosong");
         } else if (TextUtils.isEmpty(password)) {
-            eTextPassword.setError("NIM Tidak Boleh Kosong");
+            Toast.makeText(this, "Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
         } else {
             loadingBar.startLoadingDialog();
             Handler handler = new Handler();
@@ -137,28 +139,29 @@ public class LoginActivity extends AppCompatActivity {
 
                         // intent ke Home
                         Intent LandingPage = new Intent(LoginActivity.this, MainActivity.class);
+                        LandingPage.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(LandingPage);
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("id", id );
-                        editor.putString("usernamw", name);
+                        editor.putString("username", name);
                         editor.putString("email", email);
                         editor.putString("notelephone", notelephone);
                         editor.apply();
                     } else {
                         String massage = responseLogin.getMessage();
-                        Toast.makeText(LoginActivity.this, "ya gagal dah", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, massage, Toast.LENGTH_SHORT).show();
                     }
 
                 } else{
-                    Toast.makeText(LoginActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
             }
 
             // Tidak ada Koneksi Internet
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
             }
         });
     }

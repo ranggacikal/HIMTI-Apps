@@ -45,198 +45,246 @@
         android:textSize="14sp"
         android:textStyle="normal" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/MateriaPengguna"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="235dp"
-        android:layout_marginEnd="40dp"
-        app:helperTextTextColor="@color/darkgray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_TitleRegister">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_PenggunaAkun"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableBottom="@color/darkgray"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Nama Pengguna"
-            android:background="@drawable/inputbutton"
-            android:imeOptions="actionNext"
-            android:inputType="textCapWords"
-            android:textStyle="normal" />
+            android:layout_height="match_parent" >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/MateriaPengguna"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="40dp"
+                app:helperTextTextColor="@color/darkgray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/MateriaEmail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="305dp"
-        android:layout_marginEnd="40dp"
-        app:helperTextTextColor="@color/darkgray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ti_PenggunaAkun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@color/darkgray"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Nama Pengguna"
+                    android:background="@drawable/inputbutton"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords"
+                    android:textStyle="normal" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_EmailRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableBottom="@color/darkgray"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="Email"
-            android:background="@drawable/inputbutton"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/MateriaEmail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_below="@id/MateriaPengguna"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                app:helperTextTextColor="@color/darkgray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/MateriaNoTelephone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="375dp"
-        android:layout_marginEnd="40dp"
-        app:helperTextTextColor="@color/darkgray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ti_EmailRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@color/darkgray"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Email"
+                    android:background="@drawable/inputbutton"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:textStyle="normal" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ti_NoTelephone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableBottom="@color/darkgray"
-            android:fontFamily="@font/poppins_regular"
-            android:hint="No. Telp"
-            android:background="@drawable/inputbutton"
-            android:imeOptions="actionNext"
-            android:inputType="phone"
-            android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/MateriaNoTelephone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_below="@id/MateriaEmail"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                app:helperTextTextColor="@color/darkgray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/MateriaPasswords"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="445dp"
-        android:layout_marginEnd="40dp"
-        app:helperTextTextColor="@color/teal_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:passwordToggleEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ti_NoTelephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@color/darkgray"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="No. Telp"
+                    android:background="@drawable/inputbutton"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:textStyle="normal" />
 
-        <EditText
-            android:id="@+id/ti_passwords"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:background="@drawable/inputbutton"
-            android:fontFamily="@font/poppins_regular"
-            android:textStyle="normal"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/MateriaPasswords"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_below="@id/MateriaNoTelephone"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                app:helperTextTextColor="@color/teal_700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:passwordToggleEnabled="true">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/MateriaKonfirmasiPasswords"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="515dp"
-        android:layout_marginEnd="40dp"
-        app:helperTextTextColor="@color/teal_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:passwordToggleEnabled="true">
+                <EditText
+                    android:id="@+id/ti_passwords"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:background="@drawable/inputbutton"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textStyle="normal"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/ti_KonfirmasiPasswords"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Konfirmasi Password"
-            android:fontFamily="@font/poppins_regular"
-            android:textStyle="normal"
-            android:background="@drawable/inputbutton"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/MateriaKonfirmasiPasswords"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_below="@id/MateriaPasswords"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                app:helperTextTextColor="@color/teal_700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:passwordToggleEnabled="true">
 
-    <TextView
-        android:id="@+id/tv_KebijakanPrivasi"
-        android:layout_width="259dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/MateriaKonfirmasiPasswords"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="54dp"
-        android:hint="Saya setuju dengan Syarat dan Ketentuan dan Kebijakan Privasi"
-        android:padding="8dp"
-        android:textSize="12sp"
-        android:textStyle="normal" />
+                <EditText
+                    android:id="@+id/ti_KonfirmasiPasswords"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Konfirmasi Password"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textStyle="normal"
+                    android:background="@drawable/inputbutton"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword" />
 
-    <CheckBox
-        android:id="@+id/cb_KebijakanPrivasi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/MateriaKonfirmasiPasswords"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="305dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_daftar_akun"
-        android:layout_width="315dp"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="648dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="@color/darkblue"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Daftar"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:cornerRadius="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                android:id="@+id/saya_setuju"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/MateriaKonfirmasiPasswords"
+                android:layout_marginTop="29dp"
+                android:layout_toEndOf="@+id/cb_KebijakanPrivasi"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Saya setuju dengan"
+                android:textColor="#767676"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/syarat_ketentua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/MateriaKonfirmasiPasswords"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="29dp"
+                android:layout_toEndOf="@+id/saya_setuju"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Syarat dan Ketentuan"
+                android:textColor="#0C159F"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/MateriaKonfirmasiPasswords"
+                android:layout_marginTop="29dp"
+                android:layout_toEndOf="@+id/syarat_ketentua"
+                android:fontFamily="@font/poppins_regular"
+                android:text="dan"
+                android:textColor="#767676"
+                android:textSize="10sp"
+                android:layout_marginStart="3dp"/>
+
+            <TextView
+                android:id="@+id/kebijakan_privasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/saya_setuju"
+                android:layout_toEndOf="@+id/cb_KebijakanPrivasi"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Kebijakan Privasi"
+                android:textColor="#0C159F"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/cb_KebijakanPrivasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/MateriaKonfirmasiPasswords"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="18dp"
+                android:buttonTint="#0C159F" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mb_daftar_akun"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/cb_KebijakanPrivasi"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="40dp"
+                android:backgroundTint="@color/darkblue"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Daftar"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

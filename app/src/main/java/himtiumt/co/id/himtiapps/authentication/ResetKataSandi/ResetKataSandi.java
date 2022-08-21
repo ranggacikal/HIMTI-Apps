@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 import himtiumt.co.id.himtiapps.R;
+import himtiumt.co.id.himtiapps.UI.LoadingBar;
 import himtiumt.co.id.himtiapps.authentication.ResetKataSandi.Model.RequestResetPassword;
 import himtiumt.co.id.himtiapps.authentication.ResetKataSandi.Model.ResponseResetPassword;
 import himtiumt.co.id.himtiapps.authentication.login.LoginActivity;
 import himtiumt.co.id.himtiapps.authentication.register.Model.RequestRegister;
+import himtiumt.co.id.himtiapps.authentication.register.RegisterActivity;
 import himtiumt.co.id.himtiapps.databinding.ActivityResetKataSandiBinding;
 import himtiumt.co.id.himtiapps.network.ApiConfig;
 import retrofit2.Call;
@@ -28,6 +31,7 @@ public class ResetKataSandi extends AppCompatActivity {
     ImageView returnResetPassword;
     MaterialButton materialSimpan;
     ActivityResetKataSandiBinding binding;
+    final LoadingBar loadingBar = new LoadingBar(ResetKataSandi.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class ResetKataSandi extends AppCompatActivity {
             public void onClick(View view) {
                 Intent returnPassword = new Intent(ResetKataSandi.this, LoginActivity.class);
                 startActivity(returnPassword);
+                finish();
             }
         });
 
@@ -59,11 +64,20 @@ public class ResetKataSandi extends AppCompatActivity {
           if (TextUtils.isEmpty(Email)) {
               binding.textInputEmail.setError("Email Tidak Boleh Kosong");
           } else if (TextUtils.isEmpty(Password)) {
-              binding.textInputPassword.setError("Password tidak boleh kosong");
+              Toast.makeText(this, "Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
           } else if (!Password.equals(ConfirmPassword)) {
-              binding.textInputPassword1.setError("Password tidak sesuai");
+              Toast.makeText(this, "Password Tidak Sesuai", Toast.LENGTH_SHORT).show();
           } else {
               resetPassword(Email,Password);
+              loadingBar.startLoadingDialog();
+              Handler handler = new Handler();
+              handler.postDelayed(new Runnable() {
+                  @Override
+                  public void run() {
+
+                      loadingBar.dismissDialog();
+                  }
+              }, 1000);
           }
 
         });
@@ -85,7 +99,9 @@ public class ResetKataSandi extends AppCompatActivity {
                         Toast.makeText(ResetKataSandi.this, Massage, Toast.LENGTH_SHORT).show();
 
                         Intent simpanPerubahan = new Intent(ResetKataSandi.this, VerifiedAkun.class);
+                        simpanPerubahan.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(simpanPerubahan);
+                        finish();
 
                     } else {
                         String Massage = responseResetPassword.getMessage();
@@ -93,13 +109,13 @@ public class ResetKataSandi extends AppCompatActivity {
 
                     }
                 } else {
-                    Toast.makeText(ResetKataSandi.this, "Response gagal!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResetKataSandi.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseResetPassword> call, Throwable t) {
-                Toast.makeText(ResetKataSandi.this, "Periksa jaringan anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ResetKataSandi.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
 
             }
         });

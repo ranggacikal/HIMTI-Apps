@@ -43,6 +43,7 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void run() {
                     Intent SplashScreen = new Intent(SplashScreen.this, LoginActivity.class);
+                    SplashScreen.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(SplashScreen);
                     finish();
                 }
@@ -61,6 +62,7 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void run() {
                     Intent SplashScreen = new Intent(SplashScreen.this, PageInfo.class);
+                    SplashScreen.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(SplashScreen);
                     finish();
                 }
