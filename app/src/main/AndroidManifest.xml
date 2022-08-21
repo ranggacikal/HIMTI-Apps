@@ -13,6 +13,10 @@
         android:theme="@style/Theme.HIMTIApps"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".events.DetailEventActivity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
             android:name=".authentication.register.KebijakanPrivasi.KebijakanPrivasi"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
@@ -71,7 +75,7 @@
         <activity
             android:name=".authentication.login.SplashScreen"
             android:exported="true"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -81,11 +85,11 @@
         <activity
             android:name=".authentication.login.PageInfo"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".akademik.AkademikActivity"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="sensorPortrait" />
     </application>
 
 </manifest>

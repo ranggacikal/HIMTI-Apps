@@ -41,7 +41,9 @@ public class StrukturOrganisasiActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(StrukturOrganisasiActivity.this, MainActivity.class);
+                back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(back);
+                finish();
             }
         });
 

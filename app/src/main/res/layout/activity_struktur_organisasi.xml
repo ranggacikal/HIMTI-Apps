@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_back_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="37dp"
         android:src="@drawable/ic_baseline_arrow_backblue" />
@@ -23,7 +23,7 @@
         android:fontFamily="@font/poppins_regular"
         android:text="Struktur Organisasi"
         android:textColor="#0C159F"
-        android:textSize="16sp"
+        android:textSize="19sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
