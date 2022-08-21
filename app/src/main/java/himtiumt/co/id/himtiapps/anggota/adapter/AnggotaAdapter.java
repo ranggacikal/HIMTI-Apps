@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import himtiumt.co.id.himtiapps.R;
-import himtiumt.co.id.himtiapps.anggota.model.DataAnggota;
+import himtiumt.co.id.himtiapps.anggota.model.AnggotaItem;
 
 public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaViewHolder> {
 
-    private List<DataAnggota> dataAnggotaList;
+    private List<AnggotaItem> anggotaItems;
     private Context context;
 
-    public AnggotaAdapter(List<DataAnggota> dataAnggotaList, Context context) {
-        this.dataAnggotaList = dataAnggotaList;
+    public AnggotaAdapter(List<AnggotaItem> anggotaItems, Context context) {
+        this.anggotaItems = anggotaItems;
         this.context = context;
     }
 
@@ -35,30 +34,28 @@ public class AnggotaAdapter extends RecyclerView.Adapter<AnggotaAdapter.AnggotaV
 
     @Override
     public void onBindViewHolder(@NonNull AnggotaViewHolder holder, int position) {
-        holder.tvNama.setText(dataAnggotaList.get(position).getTxtNama());
-        holder.tvNim.setText(dataAnggotaList.get(position).getTxtNim());
-        holder.tvTahunAngkatan.setText(String.valueOf(dataAnggotaList.get(position).getTxtTahunAngkatan()));
-        holder.imgProfile.setImageResource(dataAnggotaList.get(position).getImgProfle());
+        holder.tvNama.setText(anggotaItems.get(position).getNama());
+        holder.tvNim.setText(anggotaItems.get(position).getNim());
+        holder.tvTahunAngkatan.setText(String.valueOf(anggotaItems.get(position).getAngkatan()));
+
     }
 
     @Override
     public int getItemCount() {
-        return dataAnggotaList.size();
+        return anggotaItems.size();
     }
 
     public class AnggotaViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imgProfile;
         TextView tvNama;
         TextView tvNim;
         TextView tvTahunAngkatan;
 
         public AnggotaViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgProfile =itemView.findViewById(R.id.iv_profile);
             tvNama =itemView.findViewById(R.id.tv_nama);
             tvNim =itemView.findViewById(R.id.tv_nim);
-            tvTahunAngkatan =itemView.findViewById(R.id.tv_tahun_angkatan);
+            tvTahunAngkatan =itemView.findViewById(R.id.tv_tahun);
         }
     }
 }
