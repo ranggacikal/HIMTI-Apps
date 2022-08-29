@@ -18,7 +18,8 @@
         android:layout_marginLeft="103dp"
         android:layout_marginTop="97dp"
         android:layout_marginEnd="103dp"
-        android:src="@drawable/zyro_login" />
+        android:src="@drawable/zyro_login"
+        />
 
     <TextView
         android:id="@+id/tv_MasukHimti"
@@ -123,7 +124,8 @@
         android:fontFamily="@font/poppins_regular"
         android:hint="Lupa Password?"
         android:textColorHint="@color/darkblue"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        android:visibility="gone"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_masuk"
