@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -37,6 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
         String name = sharedPreferences.getString("username","");
         String email = sharedPreferences.getString("email","");
         String no_telp =sharedPreferences.getString("notelephone","");
+        String getPass= sharedPreferences.getString("password","");
+
         binding.tvNama.setText(name);
         binding.etUsername.setHint(name);
         binding.etEmail.setHint(email);
@@ -80,6 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
         String name = sharedPreferences.getString("username","");
         String email = sharedPreferences.getString("email","");
         String no_telp =sharedPreferences.getString("notelephone","");
+        String getPass= sharedPreferences.getString("password","");
         binding.tvNama.setText(name);
         binding.etUsername.setHint(name);
         binding.etEmail.setHint(email);
@@ -88,6 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void ganti(String username, String noHp, String password) {
+        String getPass= sharedPreferences.getString("password","");
         int id=sharedPreferences.getInt("id",0);
         int getid = id;
 
@@ -103,7 +108,8 @@ public class ProfileActivity extends AppCompatActivity {
                     loadingBar.dismissDialog();
                 }
             }, 1000);
-        } if (noHp != null && !noHp.isEmpty()) {
+        }
+        if (noHp != null && !noHp.isEmpty()) {
             requestProfile.setNoHp(noHp);
             loadingBar.startLoadingDialog();
             Handler handler = new Handler();
@@ -126,6 +132,17 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }, 1000);
             requestProfile.setPassword(password);
+        } else if (TextUtils.isEmpty(password)) {
+            loadingBar.startLoadingDialog();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    loadingBar.dismissDialog();
+                }
+            }, 1000);
+            requestProfile.setPassword(getPass);
         } else {
             loadingBar.startLoadingDialog();
             Handler handler = new Handler();
@@ -136,7 +153,6 @@ public class ProfileActivity extends AppCompatActivity {
                     loadingBar.dismissDialog();
                 }
             }, 1000);
-
         }
         ApiConfig.service.getprofilebyid(getid, requestProfile).enqueue(new Callback<ResponseProfile>() {
             @Override
@@ -166,13 +182,13 @@ public class ProfileActivity extends AppCompatActivity {
 
                     }
                 } else {
-                    Toast.makeText(ProfileActivity.this, "respongagal", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Response Gagal", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseProfile> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, "periksa jaringan anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, "Periksa Jaringan Anda", Toast.LENGTH_SHORT).show();
 
             }
         });
