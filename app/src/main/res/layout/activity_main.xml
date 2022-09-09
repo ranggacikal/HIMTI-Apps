@@ -78,7 +78,7 @@
             <LinearLayout
                 android:id="@+id/ll_container_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="37dp"
                 android:orientation="horizontal">
@@ -169,23 +169,23 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/ll_container_2"
-                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
                 android:layout_below="@id/ll_container_1"
+                android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginHorizontal="30dp">
+                android:orientation="horizontal">
 
                 <!--Struktur Organisasi-->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_struktur_akademik"
                     android:layout_width="138dp"
                     android:layout_height="146dp"
-                    app:cardCornerRadius="10dp"
-                    android:backgroundTint="@color/darkwhite"
                     android:layout_marginEnd="12dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkwhite"
+                    app:cardCornerRadius="10dp">
 
 
                     <RelativeLayout
@@ -224,10 +224,10 @@
                     android:id="@+id/cv_data_dosen"
                     android:layout_width="138dp"
                     android:layout_height="146dp"
-                    app:cardCornerRadius="10dp"
-                    android:backgroundTint="@color/darkwhite"
                     android:layout_marginStart="12dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkwhite"
+                    app:cardCornerRadius="10dp">
 
 
                     <RelativeLayout
@@ -246,9 +246,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:fontFamily="@font/poppins_regular"
                             android:layout_marginTop="96dp"
                             android:layout_marginBottom="22dp"
+                            android:fontFamily="@font/poppins_regular"
                             android:text="Data Dosen"
                             android:textColor="@color/darkblue"
                             android:textSize="14dp"
@@ -261,23 +261,23 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/ll_container_3"
-                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
                 android:layout_below="@id/ll_container_2"
+                android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginHorizontal="30dp">
+                android:orientation="horizontal">
 
                 <!--Informasi Akademik-->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_informasi_akademik"
                     android:layout_width="138dp"
                     android:layout_height="146dp"
-                    app:cardCornerRadius="10dp"
-                    android:backgroundTint="@color/darkwhite"
                     android:layout_marginEnd="12dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkwhite"
+                    app:cardCornerRadius="10dp">
 
 
                     <RelativeLayout
@@ -296,11 +296,11 @@
                         <TextView
                             android:layout_width="70dp"
                             android:layout_height="36dp"
+                            android:layout_below="@id/icon_informasi_akademik"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
-                            android:gravity="center"
                             android:fontFamily="@font/poppins_regular"
-                            android:layout_below="@id/icon_informasi_akademik"
+                            android:gravity="center"
                             android:text="Informasi Akademik"
                             android:textColor="@color/darkblue"
                             android:textSize="13dp"
@@ -316,10 +316,10 @@
                     android:id="@+id/cv_acara_himti"
                     android:layout_width="138dp"
                     android:layout_height="146dp"
-                    app:cardCornerRadius="10dp"
-                    android:backgroundTint="@color/darkwhite"
                     android:layout_marginStart="12dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkwhite"
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -338,8 +338,8 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/iv_acara_himti"
                             android:layout_centerHorizontal="true"
-                            android:fontFamily="@font/poppins_regular"
                             android:layout_marginTop="17dp"
+                            android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
                             android:text="Acara Himti"
                             android:textColor="@color/darkblue"
