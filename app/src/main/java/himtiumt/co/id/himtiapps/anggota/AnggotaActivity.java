@@ -287,7 +287,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2011() {
-        String angkatan = "2";
+        String angkatan = "11";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override
@@ -310,7 +310,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2012() {
-        String angkatan = "3";
+        String angkatan = "10";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override
@@ -333,7 +333,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2013() {
-        String angkatan = "1";
+        String angkatan = "9";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override
@@ -356,7 +356,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2014() {
-        String angkatan = "2";
+        String angkatan = "8";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override
@@ -379,7 +379,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2015() {
-        String angkatan = "3";
+        String angkatan = "7";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override
@@ -402,7 +402,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2016() {
-        String angkatan = "1";
+        String angkatan = "6";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override
@@ -425,7 +425,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2017() {
-        String angkatan = "2";
+        String angkatan = "5";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override
@@ -448,7 +448,7 @@ public class AnggotaActivity extends AppCompatActivity {
     }
 
     private void sortBy2018() {
-        String angkatan = "3";
+        String angkatan = "4";
 
         ApiConfig.service.getAngkatanAnggota(angkatan).enqueue(new Callback<ResponseAngkatanAnggota>() {
             @Override

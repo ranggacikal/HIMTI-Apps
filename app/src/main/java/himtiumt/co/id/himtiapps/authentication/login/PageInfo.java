@@ -88,13 +88,13 @@ public class PageInfo extends AppCompatActivity {
         EventHIMTI.setImage(R.drawable.zyro_events);
 
         ItemScreens AboutHIMTI = new ItemScreens();
-        AboutHIMTI.setTitle("Tentang HIMTI");
-        AboutHIMTI.setDescription("Berisi tentang seputar sejarah, struktural, keanggotaan dan dokumentasi HIMTI");
+        AboutHIMTI.setTitle("Struktural Organisasi");
+        AboutHIMTI.setDescription("Memberitahu nama-nama para anggota berserta jabatan di organisasi");
         AboutHIMTI.setImage(R.drawable.zyro_aboutorganization);
 
         ItemScreens AboutCampus = new ItemScreens();
-        AboutCampus.setTitle("Info Kampus");
-        AboutCampus.setDescription("Memberikan informasi berita terbaru seputar kampus UMT dan informasi tentang Teknik Informatika UMT");
+        AboutCampus.setTitle("Info Akademik");
+        AboutCampus.setDescription("Informasi terbaru kampus UMT yang  ada di program studi teknik informatika");
         AboutCampus.setImage(R.drawable.zyro_aboutcampus);
 
         item_screens.add(SharingHIMTI);

@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (!password.equals(confirmPassword)) {
                 Toast.makeText(this, "Password Tidak Sesuai", Toast.LENGTH_SHORT).show();
             } else if (!binding.cbKebijakanPrivasi.isChecked()) {
-                Toast.makeText(this, "Harap Mempersetujui Syarat dan Ketentua", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Harap Mempersetujui Syarat dan Ketentuan", Toast.LENGTH_SHORT).show();
             } else {
                 register(binding.tiPenggunaAkun.getText().toString(), binding.tiEmailRegister.getText().toString()
                         , binding.tiNoTelephone.getText().toString(), binding.tiPasswords.getText().toString(), binding.tiKonfirmasiPasswords.getText().toString());
