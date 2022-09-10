@@ -94,7 +94,7 @@ public class PageInfo extends AppCompatActivity {
 
         ItemScreens AboutCampus = new ItemScreens();
         AboutCampus.setTitle("Info Akademik");
-        AboutCampus.setDescription("Informasi terbaru kampus UMT yang  ada di fakultas teknik");
+        AboutCampus.setDescription("Informasi terbaru kampus UMT yang  ada di program studi teknik informatika");
         AboutCampus.setImage(R.drawable.zyro_aboutcampus);
 
         item_screens.add(SharingHIMTI);
