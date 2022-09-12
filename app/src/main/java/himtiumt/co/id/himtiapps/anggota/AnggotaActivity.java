@@ -57,6 +57,8 @@ public class AnggotaActivity extends AppCompatActivity {
             finish();
         });
 
+        binding.spinTahunAngkatan.setVisibility(View.GONE);
+
         setUpDataDosen();
 
         setupSpinner();
@@ -102,7 +104,6 @@ public class AnggotaActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 search(binding.tidSearch.getText().toString());
-                binding.spinTahunAngkatan.setSelection(0);
             }
 
             private void search(String search) {
