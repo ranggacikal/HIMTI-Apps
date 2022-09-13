@@ -41,10 +41,16 @@ public class ProfileActivity extends AppCompatActivity {
         String getPass= sharedPreferences.getString("password","");
 
         binding.tvNama.setText(name);
+        binding.tvNama.setEnabled(false);
         binding.etUsername.setHint(name);
+        binding.etUsername.setEnabled(false);
         binding.etEmail.setHint(email);
+        binding.etEmail.setEnabled(false);
         binding.etNoTelp.setHint(no_telp);
+        binding.etNoTelp.setEnabled(false);
         binding.tvEmail.setText(email);
+        binding.tvEmail.setEnabled(false);
+        binding.etPass.setEnabled(false);
         binding.ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,8 +62,20 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        binding.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.tvNama.setEnabled(true);
+                binding.etUsername.setEnabled(true);
+                binding.etEmail.setEnabled(true);
+                binding.etNoTelp.setEnabled(true);
+                binding.tvEmail.setEnabled(true);
+                binding.btnSimpan.setVisibility(View.VISIBLE);
+                binding.btnEdit.setVisibility(View.GONE);
+            }
+        });
 
-        binding.btnEdit.setOnClickListener(view -> {
+        binding.btnSimpan.setOnClickListener(view -> {
             ganti(binding.etUsername.getText().toString(),binding.etNoTelp.getText().toString(),binding.etPass.getText().toString());
 
         });

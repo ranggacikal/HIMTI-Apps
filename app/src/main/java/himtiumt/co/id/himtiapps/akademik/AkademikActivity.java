@@ -44,4 +44,13 @@ public class AkademikActivity extends AppCompatActivity {
         binding.webView.loadUrl("https://informatika.ft-umt.ac.id/");
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent back = new Intent(AkademikActivity.this, MainActivity.class);
+        back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(back);
+        finish();
+    }
 }
