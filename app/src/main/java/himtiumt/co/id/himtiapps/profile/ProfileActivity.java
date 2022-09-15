@@ -8,9 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 import himtiumt.co.id.himtiapps.R;
 import himtiumt.co.id.himtiapps.UI.LoadingBar;
@@ -58,9 +60,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         binding.btnEdit.setOnClickListener(view -> {
-            ganti(binding.etUsername.getText().toString(),binding.etNoTelp.getText().toString(),binding.etPass.getText().toString());
-
+            String emailInputan = binding.etEmail.getText().toString();
+            validateEmail(emailInputan);
         });
+
         binding.btnKeluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +94,21 @@ public class ProfileActivity extends AppCompatActivity {
         binding.tvEmail.setText(email);
     }
 
-    private void ganti(String username, String noHp, String password) {
+    private boolean validateEmail(String emailInputan) {
+        if (!emailInputan.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInputan).matches()) {
+            ganti(binding.etUsername.getText().toString(),emailInputan, binding.etNoTelp.getText().toString(), binding.etPass.getText().toString());
+            return true;
+        } if (TextUtils.isEmpty(emailInputan)) {
+            ganti(binding.etUsername.getText().toString(),binding.etEmail.getText().toString(), binding.etNoTelp.getText().toString(), binding.etPass.getText().toString());
+            return true;
+        }
+        else {
+            Toast.makeText(this, "Email Tidak Sesuai", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
+    private void ganti(String username, String email, String noHp, String password) {
         String getPass= sharedPreferences.getString("password","");
         int id=sharedPreferences.getInt("id",0);
         int getid = id;
@@ -99,6 +116,18 @@ public class ProfileActivity extends AppCompatActivity {
         RequestProfile requestProfile = new RequestProfile();
         if (username != null && !username.isEmpty()) {
             requestProfile.setName(username);
+            loadingBar.startLoadingDialog();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    loadingBar.dismissDialog();
+                }
+            }, 1000);
+        }
+        if (email != null && !email.isEmpty()) {
+            requestProfile.setEmail(email);
             loadingBar.startLoadingDialog();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -162,12 +191,14 @@ public class ProfileActivity extends AppCompatActivity {
                     boolean sukses = responseProfile.isStatus();
                     if (sukses) {
                         String name = responseProfile.getProfilUpdate().getName();
+                        String email = responseProfile.getProfilUpdate().getEmail();
                         String notelp = responseProfile.getProfilUpdate().getNoHp();
                         String pesanberhasil = responseProfile.getMessage();
                         Toast.makeText(ProfileActivity.this, pesanberhasil, Toast.LENGTH_SHORT).show();
 
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("username", name);
+                        editor.putString("email", email);
                         editor.putString("notelephone",notelp);
                         editor.apply();
 

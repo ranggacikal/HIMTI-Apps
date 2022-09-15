@@ -13,6 +13,9 @@ public class RequestProfile{
 	@SerializedName("name")
 	private String name;
 
+	@SerializedName("email")
+	private String email;
+
 	public void setPassword(String password){
 		this.password = password;
 	}
@@ -35,5 +38,13 @@ public class RequestProfile{
 
 	public String getName(){
 		return name;
+	}
+
+	public void setEmail(String email){
+		this.email = email;
+	}
+
+	public String getEmail(){
+		return email;
 	}
 }
